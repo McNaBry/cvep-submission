@@ -167,7 +167,7 @@ decision_log = [
 
 ];
 
-var current_chat = "";
+var current_chat = "Group";
 var message_notif = new Audio("assets/new_message.mp3");
 
 //constructing the decision tree
@@ -248,15 +248,23 @@ function swapToNewChat(person) {
     document.getElementById('chat-window').remove();
     document.getElementById('messenger-main').appendChild(chat_elements[person]);
 
+    current_chat = person;
+    document.getElementById(person + "-contact").setAttribute('class', '');
+
     // auto scrolls down
     chat_elements[person].scrollTop = chat_elements[person].scrollHeight;
 }
 
-async function addMessageEvent(chat, message, sound, sleeptime) {
+async function addMessageEvent(chat_name, message, sound, sleeptime) {
     await sleep(sleeptime);
     sound.play();
+    var chat = chat_elements[chat_name];
     chat.appendChild(message);
     chat.scrollTop = chat.scrollHeight;
+
+    if (current_chat != chat_name) {
+        document.getElementById(chat_name + "-contact").setAttribute("class", "unread");
+    }
 }
 
 function addDiaryEvent(diary_entry) {
@@ -298,7 +306,7 @@ function processOption(option) {
             current_decision.gameEvent();
         }
     } else {
-        addMessageEvent(chat_elements['Group'], newMessage("Player", current_decision.option), message_notif, 0);
+        addMessageEvent('Group', newMessage("Player", current_decision.option), message_notif, 0);
         if (current_decision) {
             current_decision.gameEvent();
         }
@@ -319,7 +327,7 @@ function displayOption(decisions) {
 }
 
 async function startGame() {
-    var group = chat_elements['Group'];
+    var group = 'Group';
 
     await addMessageEvent(group, newMessage("Player", "Same, I just like the graphics and effects"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Adi", "How dare youuu"), message_notif, 1000);
@@ -340,7 +348,7 @@ async function startGame() {
 
 function scenario1Neutral() {
     var message_notif = new Audio("assets/new_message.mp3");
-    var group = chat_elements['Group'];
+    var group = 'Group';
 
     addMessageEvent(group, newMessage("Patrick", "Sure."), message_notif, 1000);
     displayOption(current_decision.descendants);
@@ -365,7 +373,7 @@ function scenario1Neutral() {
 
 function scenario1Probing() {
     var message_notif = new Audio("assets/new_message.mp3");
-    var group = chat_elements['Group'];
+    var group = 'Group';
 
     addMessageEvent(group, newMessage("Patrick", "I'm just busy. I can't make it. Sorry to disappoint"), message_notif, 1000);
     displayOption(current_decision.descendants);
@@ -374,7 +382,7 @@ function scenario1Probing() {
 
 function scenario1ProbingEnd() {
     var message_notif = new Audio("assets/new_message.mp3");
-    var group = chat_elements['Group'];
+    var group = 'Group';
 
     displayOption(current_decision.descendants);
     addDiaryEvent([
