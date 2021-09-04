@@ -51,7 +51,105 @@ var chat_log = {
         ["Hilman", "LOL I only watch for the action"],
     ],
     "Patrick" : [
-
+        ["Patrick", "BRO"],
+        ["Patrick", "OI"],
+        ["Patrick", "YOU THERE"],
+        ["Player", "Yea, what"],
+        ["Patrick", "I"],
+        ["Patrick", "Am going"],
+        ["Patrick", "To ask"],
+        ["Patrick", "Marianne"],
+        ["Patrick", "OUT"],
+        ["Player", "Bruh"],
+        ["Player", "You barely know her"],
+        ["Player", "Is that rlly the best move right now"],
+        ["Patrick", "OKAY NO LIKE"],
+        ["Patrick", "I THINK WE HAVE A GD CONNECTION"],
+        ["Patrick", "IT MIGHT ACTL WORK"],
+        ["Player", "That’s what you said for the 5 or so girls in sec sch.."],
+        ["Player", "Just before you got rejected by every single one of them"],
+        ["Patrick", "OKAY WHY YOU GOTTAN BE LIKE THT"],
+        ["Patrick", "Like I mean that was difff"],
+        ["Player", "Sureeeeee it was"],
+        ["Patrick", "I MEAN"],
+        ["Patrick", "Marianne and I have a good bond"],
+        ["Patrick", "And we are similar in so many ways"],
+        ["Patrick", "I think she’ll say yes"],
+        ["Player", "Okay, tab then"],
+        ["Patrick", "TQTQ"],
+        ["Player", "Don’t forget me LOL"],
+        ["Patrick", "NO LA OFC I WONT"],
+        ["Payer", "HAHAHAHAHAHA"],
+        ["Patrick", "AGGHHHHH OK NVM I CANNOT"],
+        ["Player", "LOL HAHAHAHA I THOUGHT U WERE SO CONFIDENT"],
+        ["Patrick", "NONONO NVM"],
+        ["Patrick", "Our convo took a diff turn"],
+        ["Patrick", "Maybe next time"],
+        ["Player", "LOL GG"],
+        ["Patrick", "Oiiii"],
+        ["Player", "What"],
+        ["Patrick", "HAVE YOU HEARD THE NEW BLACKPINK SONG????"],
+        ["Player", "Uhm yea, it’s all over my Youtube feed"],
+        ["Patrick", "DUDEEEE"],
+        ["Patrick", "It’s so goood"],
+        ["Player", "Chill"],
+        ["Player", "it’s like a solid"],
+        ["Player", "7/10"],
+        ["Patrick", "NAH NAH NAH"],
+        ["Patrick", "I GIVE IT 11/10"],
+        ["Patrick", "LIKE BRO"],
+        ["Patrick", "LOOK AT THE VIEWS"],
+        ["Player", "Calm down, it won’t even beat BTS"],
+        ["Patrick", "YEA IT WILL"],
+        ["Patrick", "HAHHAHAHA I’M STREAMING IT RN IN CLASS"],
+        ["Player", "Pay attention to bio lahh"],
+        ["Patrick", "NOOOOO"],
+        ["Patrick", "WE GG BEAT BTS"],
+        ["Player", "Uhm alright"],
+        ["Player", "If you say so.."],
+        ["Patrick", "BROOOOOO"],
+        ["Patrick", "Did you see my choir scoresheets?"],
+        ["Player", "Nope"],
+        ["Player", "Oh wait"],
+        ["Player", "I think they were on the table"],
+        ["Patrick", "WHICH TABLE"],
+        ["Player", "Beside the piano?"],
+        ["Patrick", "OH DAMN"],
+        ["Patrick", "HOW AM I GG TO PRACTICE.. AGHHHH"],
+        ["Player", "Uhh"],
+        ["Player", "I can send u the online copies"],
+        ["Patrick", "YES PLS"],
+        ["Patrick", "The concert is in less than a month"],
+        ["Patrick", "I NEED TO PRACTICE"],
+        ["Player", "Ok ok chill"],
+        ["Player", "Anyway I’ll be there to cover you"],
+        ["Player", ":P"],
+        ["Patrick", "Ehhhh why you gotta do me like that"],
+        ["Player", "HAHAHA You’re off-pitch so often"],
+        ["Patrick", "WOI COME ON LA"],
+        ["Patrick", "It’s not often"],
+        ["Player", "Okay fineee"],
+        ["Patrick", "ANYWAY SEND ME THE SCORES SOON PLS"],
+        ["Patrick", "THANKS"],
+        ["Patrick", "Bryan, you there?"],
+        ["Player", "WHY ON EARTH ARE YOU STILL UP FOR??"],
+        ["Player", "IT’S 3AM"],
+        ["Patrick", "Couldn’t sleep"],
+        ["Patrick", "Ended up studying"],
+        ["Player", "You can study so late meh?"],
+        ["Patrick", "Nope"],
+        ["Patrick", "Can’t focus"],
+        ["Player", "Bruh go get some sleep"],
+        ["Player", "Your Bio paper is in like 3 hours"],
+        ["Patrick", "I know"],
+        ["Patrick", "Why are youu still up?"],
+        ["Player", "Coding lorhh"],
+        ["Player", "It’s not like I have exam tmr anyway"],
+        ["Player", "(More like today)"],
+        ["Patrick", "Yea.. you who don’t take bio"],
+        ["Patrick", "Ok nvm. Don’t disturb you"],
+        ["Player", "There there"],
+        ["Player", "Try to go sleep"],
     ],
     "Hilman": [
 
@@ -335,6 +433,13 @@ function buildDecisionTree() {
     exposePath.descendants.push(adviceOption);
     exposePath.descendants.push(supportOption);
 
+    // Day 3.5
+    var start3Node2 = new TreeNode("root", null);
+    var keepOption = new TreeNode("[Ask Adi not to bring it up in the group]", day32_keep);
+    var releaseOption = new TreeNode("[Ask Adi to bring it up in the group]", day32_release);
+    start3Node2.descendants.push(keepOption);
+    start3Node2.descendants.push(releaseOption);
+
     // Day 4
     var start4Node = new TreeNode("root", null);
     var consoleOption = new TreeNode("[Console and reassure him by yourself]", day4_console);
@@ -358,6 +463,7 @@ function buildDecisionTree() {
     decision_tree.push(startNode);
     decision_tree.push(start2Node);
     decision_tree.push(start3Node);
+    decision_tree.push(start3Node2);
     decision_tree.push(start4Node);
     decision_tree.push(start5Node);
 
@@ -431,7 +537,7 @@ function day1_neutral() {
     displayOption(current_decision.descendants);
 
     addDiaryEvent([
-        "LAST DAY OF J1 FYE", "09 November 2021",
+        "Done With Exams!!", "09 November 2021",
         `Dear Diary,
         <br /><br />
         WE’VE MADE IT!! Our last exam is finally completed!! Wow, it has been a long, painful journey. I’m so, so happy to finally be done with it. Long break ahead!! I think that last H2 Math paper went as well as I could have expected it to. Not ideal, but I did my best. 
@@ -485,13 +591,8 @@ function day1_probingend() {
 }
 
 async function startday2() {
-    await sleep(5000);
+    await sleep(30000);
     current_decision = decision_tree[1];
-    addDiaryEvent([
-        "Class Ranking", "01 August 2019",
-        "Class Ranking is awesome"
-    ]);
-    await sleep(5000);
     var group = 'Group';
 
     await addMessageEvent(group, newMessage("Hilman", "Yo how did yall do?"), message_notif, 2000);
@@ -533,6 +634,19 @@ async function day2_reveal() {
     options_group = "Patrick";
 
     decision_log['day2'] = 'expose';
+
+    addDiaryEvent([
+        "J1 Results Day", "19 November 2021",
+        `
+        Dear Diary,
+        <br /><br />
+	    It truly has been a busy year. We finally made it to the very end. Even Adi, who is usually on top of everything, has been feeling swamped. His results weren’t as good as he had expected but, being the tough bean that he is, wasn’t too distraught. He did mention the many changes we had to adapt to and accepted that a drop in grades was to be expected. 
+        <br /><br />
+	    Hilman scored the usual. Straight ‘A’s again. I don’t know how that man keeps doing it! Meanwhile here I am proud of my slight improvement from the midyear exams. 
+        <br /><br />
+        Weirdly, Patrick seemed to have slipped up this time round. In hindsight, I really should have been more sensitive and should not have revealed Pat’s results before he did. I hope he doesn;t hold that against me.
+        `
+    ]);
 
     displayOption(current_decision.descendants);
 }
@@ -601,7 +715,21 @@ async function day2_understand() {
 
     displayOption(current_decision.descendants);
 
+    addDiaryEvent([
+        "J1 Results Day", "19 November 2021",
+        `
+        Dear Diary,
+        <br /><br />
+	    It truly has been a busy year. We finally made it to the very end. Even Adi, who is usually on top of everything, has been feeling swamped. His results weren’t as good as he had expected but, being the tough bean that he is, wasn’t too distraught. He did mention the many changes we had to adapt to and accepted that a drop in grades was to be expected. 
+        <br /><br />
+	    Hilman scored the usual. Straight ‘A’s again. I don’t know how that man keeps doing it! Meanwhile here I am proud of my slight improvement from the midyear exams. 
+        <br /><br />
+        Weirdly, Patrick seemed to have slipped up this time around. Considering that he didn’t want to tell the truth, it must be a sensitive topic for him. Hopefully the others are understanding if they ever do find out about it.
+        `
+    ]);
+
     conflict_flag = true;
+    decision_log['day2'] = 'lie';
     startDay3();
 }
 
@@ -613,13 +741,40 @@ async function day2_notell() {
     options_group = "Group";
     decision_log['day2'] = 'lie';
 
+    addDiaryEvent([
+        "J1 Results Day", "19 November 2021",
+        `
+        Dear Diary,
+        <br /><br />
+	    It truly has been a busy year. We finally made it to the very end. Even Adi, who is usually on top of everything, has been feeling swamped. His results weren’t as good as he had expected but, being the tough bean that he is, wasn’t too distraught. He did mention the many changes we had to adapt to and accepted that a drop in grades was to be expected. 
+        <br /><br />
+	    Hilman scored the usual. Straight ‘A’s again. I don’t know how that man keeps doing it! Meanwhile here I am proud of my slight improvement from the midyear exams. 
+        <br /><br />
+        Weirdly, Patrick seemed to have slipped up this time around. Considering that he didn’t want to tell the truth, it must be a sensitive topic for him. Hopefully the others are understanding if they ever do find out about it.
+        `
+    ]);
+
     displayOption(current_decision.descendants);
 
     conflict_flag = true;
 }
 
 async function day2_ok() {
+    addDiaryEvent([
+        "J1 Results Day", "19 November 2021",
+        `
+        Dear Diary,
+        <br /><br />
+	    It truly has been a busy year. We finally made it to the very end. Even Adi, who is usually on top of everything, has been feeling swamped. His results weren’t as good as he had expected but, being the tough bean that he is, wasn’t too distraught. He did mention the many changes we had to adapt to and accepted that a drop in grades was to be expected. 
+        <br /><br />
+	    Hilman scored the usual. Straight ‘A’s again. I don’t know how that man keeps doing it! Meanwhile here I am proud of my slight improvement from the midyear exams. 
+        <br /><br />
+        Weirdly, Patrick seemed to have slipped up this time around. Considering that he didn’t want to tell the truth, it must be a sensitive topic for him. Hopefully the others are understanding if they ever do find out about it.
+        `
+    ]);
+
     conflict_flag = true;
+    decision_log['day2'] = 'lie';
     startDay3();
 }
 
@@ -669,6 +824,19 @@ async function day2_pushing() {
     await addMessageEvent(group, newMessage("Player", "It has been on all of us, so don’t be scared to talk abt it"), message_notif, 1000);
     
     options_group = "Group";
+
+    addDiaryEvent([
+        "J1 Results Day", "19 November 2021",
+        `
+        Dear Diary,
+        <br /><br />
+	    It truly has been a busy year. We finally made it to the very end. Even Adi, who is usually on top of everything, has been feeling swamped. His results weren’t as good as he had expected but, being the tough bean that he is, wasn’t too distraught. He did mention the many changes we had to adapt to and accepted that a drop in grades was to be expected. 
+        <br /><br />
+	    Hilman scored the usual. Straight ‘A’s again. I don’t know how that man keeps doing it! Meanwhile here I am proud of my slight improvement from the midyear exams. 
+        <br /><br />
+        Weirdly, Patrick seemed to have slipped up this time around. Considering that he didn’t want to tell the truth, it must be a sensitive topic for him. I’m just glad that he still managed to find the courage to tell the truth to Adi and Hilman and that they earnestly supported him. I’m really blessed to have such a great group of friends ;)
+        `
+    ]);
 
     displayOption(current_decision.descendants);
 
@@ -760,6 +928,20 @@ async function day3_lie() {
     await addMessageEvent(group, newMessage("Player", "Cute ahh datey datey after school"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Adi", "Eh stop lah guys, I think he’s prob gg to explode from blushing too much"), message_notif, 1000);
 
+    addDiaryEvent([
+        "Parent-Teacher Meeting", "22nd November 2021",
+        `
+        Dear Diary, 
+        <br /><br />
+        The parent-teacher meeting was today. Which means half-day school and more fun soccer times with the bois! What’s more, it seems like my teachers actually said pleasant things about me for once! My parents actually praised me after their meeting with Mdm Chong. 
+        <br /><br />
+        On a more serious note, Patrick had to follow his parents for the meeting. Most likely because of the sudden dip in his results. He looked so unlike himself today. Just quiet and sullen. Heck, he didn’t even wave to Marianne when she waved to him earlier today. He’s just so out of it whenever it comes to his grades and his parents it seems. 
+        <br /><br />
+        I hope he manages to hold out. 
+        `
+    ]);
+
+
     if (conflict_flag && decision_log['day2'] == 'lie') {
         startConflict();
     } else {
@@ -781,6 +963,19 @@ async function day3_advice() {
     await addMessageEvent(group, newMessage("Hilman", "I mean, yea he was just helping"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Patrick", "tbh, you can’t rlly help"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Patrick", "Yall can’t convince my parents anw"), message_notif, 2000);
+
+    addDiaryEvent([
+        "Parent-Teacher Meeting", "22nd November 2021",
+        `
+        Dear Diary, 
+        <br /><br />
+        The parent-teacher meeting was today. Which means half-day school and more fun soccer times with the bois! What’s more, it seems like my teachers actually said pleasant things about me for once! My parents actually praised me after their meeting with Mdm Chong. 
+        <br /><br />
+        On a more serious note, Patrick had to follow his parents for the meeting. Most likely because of the sudden dip in his results. He looked so unlike himself today. Just quiet and sullen. Heck, he didn’t even wave to Marianne when she waved to him earlier today. He’s just so out of it whenever it comes to his grades and his parents it seems. 
+        <br /><br />
+        I hope he manages to hold out. 
+        `
+    ]);
 
     if (conflict_flag && decision_log['day2'] == 'lie') {
         startConflict();
@@ -806,6 +1001,19 @@ async function day3_support() {
     await addMessageEvent(group, newMessage("Adi", "Yea, just let us know if you need any help"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "You can talk to us if the pressure is too much"), message_notif, 2000);
 
+    addDiaryEvent([
+        "Parent-Teacher Meeting", "22nd November 2021",
+        `
+        Dear Diary, 
+        <br /><br />
+        The parent-teacher meeting was today. Which means half-day school and more fun soccer times with the bois! What’s more, it seems like my teachers actually said pleasant things about me for once! My parents actually praised me after their meeting with Mdm Chong. 
+        <br /><br />
+        On a more serious note, Patrick had to follow his parents for the meeting. Most likely because of the sudden dip in his results. He looked so unlike himself today. Just quiet and sullen. Heck, he didn’t even wave to Marianne when she waved to him earlier today. He’s just so out of it whenever it comes to his grades and his parents it seems. 
+        <br /><br />
+        I hope he manages to hold out. 
+        `
+    ]);
+
     if (conflict_flag && decision_log['day2'] == 'lie') {
         startConflict();
     } else {
@@ -814,6 +1022,7 @@ async function day3_support() {
 }
 
 async function startConflict() {
+    current_decision = decision_tree[3];
     var group = "Adi";
     await addMessageEvent(group, newMessage("Adi", "Eh dude"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "What’s up"), message_notif, 2000);
@@ -831,11 +1040,37 @@ async function startConflict() {
     await addMessageEvent(group, newMessage("Player", "I guess he'll bring it up when the time is right"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Adi", "I hope so"), message_notif, 2000);
 
+    displayOption(current_decision.descendants);
+}
+
+async function day32_keep() {
+    var group = "Adi";
+    await addMessageEvent(group, newMessage("Player", "It’s a sensitive topic"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Given that he has requested it remain under wraps, I think we shld recognise and respect his privacy"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "I guess I just wished that he wld trust us w these things"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "It’s not like we wldnt understand"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "But yeah, if he wants to keep it private, I totally understand as well"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "I just hope that he trusts us enough to one day share these things with us"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Trust me okay, he trusts you"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "He just needs time to process"), message_notif, 2000);
+
+    addDiaryEvent([
+        "Exposed", "15 December 2021",
+        `
+        Dear Diary, 
+        <br /><br />
+        Adi somehow managed to see the class standings today and asked me about it. I told him the truth and to my relief he took it well! I still told him to keep it under wraps for now till Patrick tells the truth himself. Adi agreed but I still wonder if that was the best decision for everyone. Maybe talking it through may have been a better option.
+        `
+    ]);
+
+    startDay4()
+}
+
+async function day32_release() {
+    var group = "Group";
     await addMessageEvent(group, newMessage("Player", "If you want, you cld prompt him a little on the grp"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "But be nice abt it, just softly prod him"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Adi", "Hmm I’ll try that"), message_notif, 2000);
-
-    var group = "Group";
     await addMessageEvent(group, newMessage("Adi", "Hey, Patrick, I hope this doesn’t overstep any boundaries, but I feel that we shld talk as a grp. We are all aware tht you didn’t do too well for your exams. Honestly, there’s no need to be embarrassed about it at all. We all make mistakes and sometimes we just don’t hit what we expect. But we are all here for you, and we don’t think any less of you because you faltered in your exams. You can trust us with these things, and we’ll be here to do whatever we can. Of course, we will respect your privacy if you ask for it. We get it"), message_notif, 4000);
     await addMessageEvent(group, newMessage("Hilman", "Yea, you don’t really have to be ashamed that you didn’t do as well as you had hoped. We all have those moments, but the important thing is accepting our failures and learning to live with them and work on them."), message_notif, 2000);
     await addMessageEvent(group, newMessage("Patrick", "Guys, I’m sorry"), message_notif, 2000);
@@ -847,18 +1082,17 @@ async function startConflict() {
     await addMessageEvent(group, newMessage("Patrick", "yea, I guess I just didnt want to accept it myself"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Patrick", "Thanks guys"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "Aiya, no problem lah, we’re all here"), message_notif, 2000);
-    
-    var group = "Adi";
-    await addMessageEvent(group, newMessage("Player", "It’s a sensitive topic"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Player", "Given that he has requested it remain under wraps, I think we shld recognise and respect his privacy"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Adi", "I guess I just wished that he wld trust us w these things"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Adi", "It’s not like we wldnt understand"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Adi", "But yeah, if he wants to keep it private, I totally understand as well"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Adi", "I just hope that he trusts us enough to one day share these things with us"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Player", "Trust me okay, he trusts you"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Player", "He just needs time to process"), message_notif, 2000);
-
     decision_log['final'] = 'expose';
+
+    addDiaryEvent([
+        "Exposed", "15 December 2021",
+        `Dear Diary, 
+        <br /><br />
+        Adi somehow managed to see the class standings today and asked me about it. I told him the truth and to my relief he took it well! In the end, I decided that it would be best for everyone to talk things through rather than to keep their thoughts to themselves and let doubtful ideas build-up. 
+        <br /><br />
+        Fortunately, Patrick took it well too and it seems our bond as a group of friends is still as strong as ever. If not, maybe stronger?
+        `
+    ]);
 
     startDay4()
 }
@@ -943,6 +1177,7 @@ async function day4_console() {
 }
 
 async function day4_group() {
+    var group = "Group";
     await addMessageEvent(group, newMessage("Player", "@Patrick why don’t you talk to all of us here"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "You know we’re all here for you"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Adi", "Yeah bro, can’t sleep?"), message_notif, 2000);
@@ -1032,6 +1267,7 @@ async function day4_console2() {
 }
 
 async function day4_group2() {
+    var group = "Group";
     await addMessageEvent(group, newMessage("Player", "@Patrick why don’t you talk to all of us here"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "You know we’re all here for you"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Adi", "Yeah bro, can’t sleep?"), message_notif, 2000);
