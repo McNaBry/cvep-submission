@@ -1076,7 +1076,7 @@ async function day32_keep() {
         `
     ]);
 
-    startDay4()
+    startDay4();
 }
 
 async function day32_release() {
@@ -1109,7 +1109,7 @@ async function day32_release() {
         `
     ]);
 
-    startDay4()
+    startDay4();
 }
 
 async function startDay4() {
