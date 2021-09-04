@@ -176,7 +176,7 @@ class TreeNode {
 }
 
 var decision_tree = [];
-
+var conflict_flag = false;
 current_decision = null;
 
 //helper sleep function from https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep 
@@ -276,9 +276,9 @@ function addDiaryEvent(diary_entry) {
     diary_list.scrollTop = diary_list.scrollHeight;
 }
 
-// Builds the decision tree.
+// Builds the decision tree. A very crude way of doing so.
 function buildDecisionTree() {
-    //Building option pathway for Scenario 1
+    //Building option pathway for Day 1
     var startNode = new TreeNode("root", null);
     var neutralOption = new TreeNode("OK, join us next time if you can!", day1_neutral);
     var probingOption = new TreeNode("What do you have on?", day1_probing);
@@ -319,8 +319,24 @@ function buildDecisionTree() {
     questionOption.descendants.push(convoendOption);
     questionOption.descendants.push(pushingOption);
 
+    // Day 3
+    var start3Node = new TreeNode("root", null);
+    var exposePath = new TreeNode("", day3_expose);
+    var liePath = new TreeNode("", day3_lie);
+    start3Node.descendants.push(exposePath);
+    start3Node.descendants.push(liePath);
+
+    var adviceOption = new TreeNode("[Give Advice]", day3_advice);
+    var supportOption = new TreeNode("[Give Advice]", day3_support);
+    exposePath.descendants.push(adviceOption);
+    exposePath.descendants.push(supportOption);
+
+    var start4Node = new TreeNode("root", null);
+
+
     decision_tree.push(startNode);
     decision_tree.push(start2Node);
+    decision_tree.push(start3Node);
 
     current_decision = startNode;
 }
@@ -400,6 +416,8 @@ function day1_neutral() {
         <br /><br />
         `
     ]);
+
+    startday2();
 }
 
 function day1_probing() {
@@ -433,6 +451,13 @@ function day1_probingend() {
 	    It’s such a pity that Patrick missed this outing though. He really would have enjoyed the movie and hanging out with us. He usually is not one to miss outings and all. We should look out in case he’s having any issues. Oh well, maybe next time then.
         `
     ]);
+
+    startday2();
+}
+
+function startday2() {
+    current_decision = decision_tree[1];
+    displayOption(current_decision.descendants);
 }
 
 function day2_reveal() {
@@ -461,14 +486,18 @@ function day2_probing() {
 
 function day2_understand() {
 
+    //addconflict
+    startDay3();
 }
 
 function day2_notell() {
 
+    //addconflict
+    startDay3();
 }
 
 function day2_ok() {
-    
+
 }
 
 function day2_questioning() {
@@ -477,9 +506,47 @@ function day2_questioning() {
 
 function day2_convoend() {
 
+    //addconflict
+    startDay3();
 }
 
 function day2_pushing() {
+
+    //addconflict
+    startDay3();
+}
+
+function startDay3() {
+
+}
+
+function day3_expose() {
+
+}
+
+function day3_lie() {
+    if (conflict_flag) {
+        startConflict();
+    }
+}
+
+function day3_advice() {
+    if (conflict_flag) {
+        startConflict();
+    }
+}
+
+function day3_support() {
+    if (conflict_flag) {
+        startConflict();
+    }
+}
+
+function startConflict() {
+    startDay4()
+}
+
+function startDay4() {
 
 }
 
