@@ -159,9 +159,9 @@ var diary_entries = [
     ]
 ];
 
-decision_log = [
-
-];
+decision_log = {
+    "day2": "",
+};
 
 var current_chat = "Group";
 var message_notif = new Audio("assets/new_message.mp3");
@@ -674,13 +674,55 @@ async function day2_pushing() {
 }
 
 async function startDay3() {
+    await sleep(3000);
     options_group = "Group";
     current_decision = decision_tree[2];
+    await addMessageEvent(group, newMessage("Hilman", "Eh guys, will yall be there for Parent-Teacher Meeting tmr?"), message_notif, 0);
+    await addMessageEvent(group, newMessage("Player", "UHM"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Player", "My parents will be thr but I don’t need to attend the PTM with them"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Adi", "LOL My parents aren’t even going to attend"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Hilman", "SAME, my parents said my grades don’t warrant their attention"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Adi", "HAHAHA My parents want to attend but they’re too busy at work"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Hilman", "OKAY SO ANYWAY"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Hilman", "Do yall wanna do smth during the PTM?"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Player", "We still hv lessons after the PTM"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Adi", "Yea so we can’t leave sch yet"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Hilman", "I was thinking we cld play soccer or smth"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Player", "Good idea LOL I think some of the guys frm my class wanna play too"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "The Joshua grp?"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Player", "Yea Joshua and gang"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Hilman", "nicee"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Patrick", "Uh guys"), message_notif, 0);
+    await addMessageEvent(group, newMessage("Patrick", "I don’t think I can play w yall"), message_notif, 1500);
 
+    if (decision_log['day2'] == 'lie') {
+        day3_lie();
+    } else {
+        day3_expose();
+    }
 }
 
 async function day3_expose() {
-
+    await addMessageEvent(group, newMessage("Patrick", "Eh guys, will yall be there for Parent-Teacher Meeting tmr?"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Player", "UHM"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Hilman", "My parents will be thr but I don’t need to attend the PTM with them"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Hilman", "LOL My parents aren’t even going to attend"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Patrick", "SAME, my parents said my grades don’t warrant their attention"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Patrick", "HAHAHA My parents want to attend but they’re too busy at work"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Adi", "OKAY SO ANYWAY"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "Do yall wanna do smth during the PTM?"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Adi", "We still hv lessons after the PTM"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Hilman", "Yea so we can’t leave sch yet"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Player", "I was thinking we cld play soccer or smth"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Adi", "Good idea LOL I think some of the guys frm my class wanna play too"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "The Joshua grp?"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Patrick", "Yea Joshua and gang"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Patrick", "nicee"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Player", "Uh guys"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Adi", "I don’t think I can play w yall"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "nicee"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Patrick", "nicee"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Patrick", "nicee"), message_notif, 1000);
 }
 
 async function day3_lie() {
