@@ -286,6 +286,16 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function changeDate(date, month, year) {
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var dateObj = new Date(year, month, date);
+    document.getElementById('date').innerHTML = date;
+    console.log(dateObj);
+    document.getElementById('day').innerHTML = days[dateObj.getDay()];
+    document.getElementById('month').innerHTML = months[month];
+}
+
 // Onclick event handler to swap diary entry
 function changeDiaryEntry(entry_num) {
     var diary_entry = document.getElementById('diary-entry');
@@ -592,6 +602,7 @@ function day1_probingend() {
 
 async function startday2() {
     await sleep(30000);
+    changeDate(19, 11-1, 2021);
     current_decision = decision_tree[1];
     var group = 'Group';
 
@@ -849,6 +860,7 @@ async function day2_pushing() {
 async function startDay3() {
     var group = "Group";
     await sleep(3000);
+    changeDate(22, 11-1, 2021);
     options_group = "Group";
     current_decision = decision_tree[2];
     await addMessageEvent(group, newMessage("Hilman", "Eh guys, will yall be there for Parent-Teacher Meeting tmr?"), message_notif, 0);
@@ -1023,6 +1035,7 @@ async function day3_support() {
 
 async function startConflict() {
     current_decision = decision_tree[3];
+    changeDate(15, 12-1, 2021);
     var group = "Adi";
     await addMessageEvent(group, newMessage("Adi", "Eh dude"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "What’s up"), message_notif, 2000);
@@ -1100,6 +1113,7 @@ async function day32_release() {
 async function startDay4() {
     await sleep(30000);
     current_decision = decision_tree[3];
+    changeDate(11, 5-1, 2022);
 
     var group = "Patrick";
     await addMessageEvent(group, newMessage("Patrick", "bro"), message_notif, 2000);
@@ -1161,6 +1175,17 @@ async function day4_console() {
     await addMessageEvent(group, newMessage("Player", "Stressing more won’t help"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "You’ll do well, now go sleep"), message_notif, 2000);
 
+    addDiaryEvent([
+        "Exam Day 1", "11 May 2022",
+        `Dear Diary,
+        <br /><br />
+        Patrick texted me last night (this morning? Idk what is 2am even). He was in full on panic mode but I think I managed to calm him down at least. I’m really glad that Patrick has the trust to confide in me and I’m even happier that I can be doing something that can help him. 
+        <br /><br />
+        Didn’t get enough sleep last night but at least I still had enough energy to last me through the day. After all, what is one night of sleep compared to helping a friend in need right?
+        `
+    ]);
+
+    await sleep(4000);
 
     //precursor to day4_console2
     await addMessageEvent(group, newMessage("Player", "Tmr is math"), message_notif, 2000);
@@ -1204,6 +1229,16 @@ async function day4_group() {
     await addMessageEvent(group, newMessage("Patrick", "Gn guys, thanks for the pep talk"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Hilman", "Np, now go and rest.."), message_notif, 2000);
 
+    await sleep(4000);
+    addDiaryEvent([
+        "Exam Day 1", "11 May 2022",
+        `Dear Diary, 
+        <br /><br />
+        Patrick texted me last night (this morning? Idk what is 2am even). He was in full on panic mode. I decided that it would be best for Adi and Hilman to be involved as well to be able to support Patrick and to share their expertise. Thankfully, both Adi and Hilman were more than willing to help and I think Patrick really learnt alot. 
+        <br /><br />
+        `
+    ]);
+
     decision_log['final'] = 'expose';
 
     startDay5();
@@ -1211,6 +1246,7 @@ async function day4_group() {
 
 async function day4_2() {
     var group = "Patrick";
+    changeDate(12, 5-1, 2022);
     await addMessageEvent(group, newMessage("Patrick", "Tmr is math"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Patrick", "omg"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Patrick", "help me"), message_notif, 2000);
@@ -1262,6 +1298,16 @@ async function day4_console2() {
     await addMessageEvent(group, newMessage("Player", "And you’ve have spent to much time just slogging away"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "You’ll be fine.. Relax and clear your mind :’)"), message_notif, 2000);
 
+    addDiaryEvent([
+        "Exam Day 2", "12 May 2022",
+        `Dear Diary,
+        <br /><br />
+        Patrick texted me again at 2am. He was once again in his full on panic mode but I managed to get him to calm down again. It’s still great that he still confides in me and can find some form of comfort this way. But...it feels like it is starting to take a toll so close to the exams. 
+        <br /><br />
+        I could really feel the fatigue heading into the later part of today’s papers.
+        `
+    ]);
+
     await sleep(8000);
     day4_3();
 }
@@ -1294,6 +1340,14 @@ async function day4_group2() {
     await addMessageEvent(group, newMessage("Patrick", "Gn guys, thanks for the pep talk"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Hilman", "Np, now go and rest.."), message_notif, 2000);
 
+    addDiaryEvent([
+        "Exam Day 2", "12 May 2022",
+        `Dear Diary, 
+        <br /><br />
+        Patrick texted me at 2am again. He was once again in full on panic mode. This time, I decided that it would be best for Adi and Hilman to be involved as well to be able to support Patrick and to share their expertise. Thankfully, both Adi and Hilman were more than willing to help and I think Patrick really learnt alot. 
+        `
+    ]);
+
     decision_log['final'] = 'expose';
 
     startDay5();
@@ -1301,6 +1355,7 @@ async function day4_group2() {
 
 async function day4_3() {
     await sleep(8000);
+    changeDate(13, 5-1, 2022);
     var group = "Group";
     await addMessageEvent(group, newMessage("Patrick", "Bro"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Patrick", "I’m sorry"), message_notif, 2000);
@@ -1353,6 +1408,16 @@ async function day4_console3() {
     await addMessageEvent(group, newMessage("Patrick", "Goodnight I guess"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "Yea, sleep well"), message_notif, 2000);
 
+    addDiaryEvent([
+        "Exam Day 3", "13 May 2022",
+        `Dear Diary,
+        <br /><br />
+        Almost as if it has become a routine now, I got that message from Patrick at 2am again. The stress must have been keeping him up and it kept me up as well since I had to pacify panic-mode Patrick yet again. I really needed a good night’s rest before the exam but could I really turn away a friend in need? 
+        <br /><br />
+        Sigh, I know I must have made many careless mistakes during the papers today from the lack of sleep. 
+        `
+    ]);
+
     startDay5();
 }
 
@@ -1372,6 +1437,16 @@ async function day4_rest() {
     await addMessageEvent(group, newMessage("Patrick", "Yea, yea sure, np"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Patrick", "Sorry for keeping you up"), message_notif, 2000);
 
+    addDiaryEvent([
+        "Exam Day 3", "13 May 2022",
+        `Dear Diary, 
+        <br /><br />
+        Almost like clockwork, the 2am message from Patrick came in once again. This time, I decided to set my foot down. Although I do care for Patrick, I still have to take care of myself before I can think about taking care of others. I had 3 papers today and the lack of sleep would not have helped. 
+        <br /><br />
+        Besides, if I keep responding every time, I’m worried that Patrick may build some form of reliance on me for support and that is definitely not very healthy. That being said, I’ll be sure to let Patrick know that I still care for him and am willing to help him when I can. This would have been easier if Adi and Hilman were here to support Patrick as well.  
+        `
+    ]);
+
     decision_log['reject'] = true;
 
     startDay5();
@@ -1380,6 +1455,7 @@ async function day4_rest() {
 async function startDay5() {
     await sleep(30000);
     var group = "Group";
+    changeDate(29, 12-1, 2022);
 
     await addMessageEvent(group, newMessage("Hilman", "Guys, how’d y’all do this time arnd?"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Patrick", "Better I guess"), message_notif, 2000);
@@ -1434,6 +1510,62 @@ async function day5_end() {
     await addMessageEvent(group, newMessage("Patrick", "They’d probably be less than satisfied but realistically, this is my current ability. While I aim high and have high expectations, I am aware of what I truly can and cannot do"), message_notif, 3000);
     await addMessageEvent(group, newMessage("Patrick", "Because of that, I will build myself up, one step at a time and I will learn to sort out constructive stress from destructive pressures"), message_notif, 3000);
 
+    if (decision_log['reject']) {
+        if (decision_log['final'] != "lie" || decision_log["day2"] != "lie") {
+            addDiaryEvent([
+                "J2 MYE results day", "29 May 2022",
+                `Dear Diary, 
+                <br /><br />
+                Today was result collection day. The last time we had this, I remember the drama with Patrick not willing to tell the truth about his results. My results got worse this time. Most likely because I was distracted when trying to care for Patrick but oh well. I’ll learn from this experience and take it in my stride. 
+                <br /><br />
+                Welp, this time round, although Patrick still didn’t do that well, he had no hesitation in sharing his results with us. He even told the truth about his J1 year-end results! It is really nice to see that Patrick is growing not just academically and that Adi and Hilman are there for him as well. 
+                <br /><br />
+                Although Patrick’s problems with his parents and their expectations has certainly not magically vanished into thin air, it is encouraging to see him learning to cope with these stressors and as a group of friends, I am sure that we will be able to overcome any challenges that any of us face, together as one.
+                `
+            ]);
+        } else {
+            addDiaryEvent([
+                "J2 MYE results day", "29 May 2022",
+                `Dear Diary, 
+                <br /><br />
+                Today was result collection day. The last time we had this, I remember the drama with Patrick not willing to tell the truth about his results. My results got worse this time. Most likely because I was distracted when trying to care for Patrick but oh well. I’ll learn from this experience and take it in my stride. 
+                <br /><br />
+                Welp, this time round, although Patrick still didn’t do that well, he had no hesitation in sharing his results with us. It is really nice to see that Patrick is growing not just academically and that Adi and Hilman are there for him as well. 
+                <br /><br />
+                Although Patrick’s problems with his parents and their expectations has certainly not magically vanished into thin air, it is encouraging to see him learning to cope with these stressors and as a group of friends, I am sure that we will be able to overcome any challenges that any of us face, together as one.
+                <br /><br />
+                `
+            ]);
+        }
+    } else {
+        if (decision_log['final'] != "lie" || decision_log["day2"] != "lie") {
+            addDiaryEvent([
+                "J2 MYE results day", "29 May 2022",
+                `Dear Diary, 
+                <br /><br />
+                Today was result collection day. The last time we had this, I remember the drama with Patrick not willing to tell the truth about his results. My results were nothing too notable, just some gradual improvements again. 
+                <br /><br />
+                Welp, this time round, although Patrick still didn’t do that well, he had no hesitation in sharing his results with us. He even told the truth about his J1 year-end results! It is really nice to see that Patrick is growing not just academically and that Adi and Hilman are there for him as well. 
+                <br /><br />
+                Although Patrick’s problems with his parents and their expectations has certainly not magically vanished into thin air, it is encouraging to see him learning to cope with these stressors and as a group of friends, I am sure that we will be able to overcome any challenges that any of us face, together as one.
+                `
+            ]);
+
+        } else {
+            addDiaryEvent([
+                "J2 MYE results day", "29 May 2022",
+                `Dear Diary, 
+                <br /><br />
+                Today was result collection day. The last time we had this, I remember the drama with Patrick not willing to tell the truth about his results. My results were nothing too notable, just some gradual improvements again. 
+                <br /><br />
+                Welp, this time round, although Patrick still didn’t do that well, he had no hesitation in sharing his results with us. It is really nice to see that Patrick is growing not just academically and that Adi and Hilman are there for him as well. 
+                <br /><br />
+                Although Patrick’s problems with his parents and their expectations has certainly not magically vanished into thin air, it is encouraging to see him learning to cope with these stressors and as a group of friends, I am sure that we will be able to overcome any challenges that any of us face, together as one.
+                `
+            ]);
+        }
+    }
+
     alert("You've come to the end of our game :) I hoped you enjoyed it");
 }
 
@@ -1441,6 +1573,8 @@ async function day5_end() {
 window.onload = function() {
     var chat = document.getElementById('chat-window');
     chat.scrollTop = chat.scrollHeight;
+
+    changeDate(9, 11-1, 2021);
 
     buildDecisionTree();
     console.log(current_decision);
