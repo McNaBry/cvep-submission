@@ -59,9 +59,6 @@ var chat_log = {
     "Adi": [
 
     ],
-    "Marianne": [
-
-    ]
 };
 
 var chat_elements = {
@@ -69,7 +66,6 @@ var chat_elements = {
     "Patrick": loadChat("Patrick"),
     "Hilman": loadChat("Hilman"),
     "Adi": loadChat("Adi"),
-    "Marianne": loadChat("Marianne")
 };
 
 var diary_entries = [
@@ -284,12 +280,47 @@ function addDiaryEvent(diary_entry) {
 function buildDecisionTree() {
     //Building option pathway for Scenario 1
     var startNode = new TreeNode("root", null);
-    var neutralOption = new TreeNode("OK, join us next time if you can!", scenario1Neutral);
-    var probingOption = new TreeNode("What do you have on?", scenario1Probing);
+    var neutralOption = new TreeNode("OK, join us next time if you can!", day1_neutral);
+    var probingOption = new TreeNode("What do you have on?", day1_probing);
     startNode.descendants.push(neutralOption);
     startNode.descendants.push(probingOption);
-    probingOption.descendants.push(new TreeNode("Alright, hope everything is ok, let us know if you need anything", scenario1ProbingEnd));
-    probingOption.descendants.push(new TreeNode("[Don't probe]", scenario1ProbingEnd));
+    probingOption.descendants.push(new TreeNode("Alright, hope everything is ok, let us know if you need anything", day1_probingend));
+    probingOption.descendants.push(new TreeNode("[Don't probe]", day1_probingend));
+
+    // Day 2
+    var start2Node = new TreeNode("root", null);
+    var revealOption = new TreeNode("[Reveal Patrick's Results]", day2_reveal);
+    var waitOption = new TreeNode("[Wait for Patrick to reply]", day2_wait);
+    start2Node.descendants.push(revealOption);
+    start2Node.descendants.push(waitOption);
+
+    var relaxOption = new TreeNode("Relax, this is just one exam. You can learn from this and do better next time", day2_relax);
+    var apologyOption = new TreeNode("Sorry, I should have let you reply yourself. It’s my bad for not being more sensitive", day2_apology);
+    revealOption.descendants.push(relaxOption);
+    revealOption.descendants.push(apologyOption);
+
+    var apologyOption2 = new TreeNode("Sorry, I should have let you reply yourself. It’s my bad for not being more sensitive", day2_apology2);
+    var probingOption2 = new TreeNode("[Probe further]", day2_probing);
+    relaxOption.descendants.push(apologyOption2);
+    relaxOption.descendants.push(probingOption2);
+
+    var understandOption = new TreeNode("ok I understand. I won’t tell them", day2_understand);
+    var notellOption = new TreeNode("I won’t tell them if you don’t want me to. But why not?", day2_notell);
+    apologyOption.descendants.push(understandOption);
+    apologyOption.descendants.push(notellOption);
+
+    var okOption = new TreeNode("Ok", day2_ok);
+    var questionOption = new TreeNode("[Continue Questioning]", day2_questioning);
+    notellOption.descendants.push(okOption);
+    notellOption.descendants.push(questionOption);
+
+    var convoendOption = new TreeNode("[Let conversation end]", day2_convoend);
+    var pushingOption = new TreeNode("[Push Patrick to tell the truth]", day2_pushing);
+    questionOption.descendants.push(convoendOption);
+    questionOption.descendants.push(pushingOption);
+
+    decision_tree.push(startNode);
+    decision_tree.push(start2Node);
 
     current_decision = startNode;
 }
@@ -346,7 +377,7 @@ async function startGame() {
     displayOption(current_decision.descendants);
 }
 
-function scenario1Neutral() {
+function day1_neutral() {
     var message_notif = new Audio("assets/new_message.mp3");
     var group = 'Group';
 
@@ -371,7 +402,7 @@ function scenario1Neutral() {
     ]);
 }
 
-function scenario1Probing() {
+function day1_probing() {
     var message_notif = new Audio("assets/new_message.mp3");
     var group = 'Group';
 
@@ -380,7 +411,7 @@ function scenario1Probing() {
     console.log(current_decision);
 }
 
-function scenario1ProbingEnd() {
+function day1_probingend() {
     var message_notif = new Audio("assets/new_message.mp3");
     var group = 'Group';
 
@@ -402,6 +433,54 @@ function scenario1ProbingEnd() {
 	    It’s such a pity that Patrick missed this outing though. He really would have enjoyed the movie and hanging out with us. He usually is not one to miss outings and all. We should look out in case he’s having any issues. Oh well, maybe next time then.
         `
     ]);
+}
+
+function day2_reveal() {
+
+}
+
+function day2_wait() {
+    
+}
+
+function day2_relax() {
+    
+}
+
+function day2_apology() {
+    
+}
+
+function day2_apology2() {
+    
+}
+
+function day2_probing() {
+
+}
+
+function day2_understand() {
+
+}
+
+function day2_notell() {
+
+}
+
+function day2_ok() {
+    
+}
+
+function day2_questioning() {
+
+}
+
+function day2_convoend() {
+
+}
+
+function day2_pushing() {
+
 }
 
 window.onload = function() {

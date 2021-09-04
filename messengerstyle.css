@@ -30,6 +30,7 @@
     justify-content: center;
     margin-bottom: 5px;
     position: relative;
+    cursor: pointer;
 }
 
 .unread::after {
@@ -110,6 +111,8 @@
     overflow-y:auto;
     padding-left:15px;
     padding-right:10px;
+    background-image: url("assets/chat_bg.png");
+    background-size: 100%;
 }
 
 #chat-window div {
@@ -130,6 +133,7 @@
 #chat-window div p {
     width: 100%;
     margin: 0;
+    cursor: default;
 }
 
 .Adi {
@@ -199,6 +203,7 @@
 }
 
 .option-container {
+    cursor: pointer;
 }
 
 .option-container:hover {
