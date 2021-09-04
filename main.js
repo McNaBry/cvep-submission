@@ -1114,7 +1114,7 @@ async function day32_release() {
 
 async function startDay4() {
     await sleep(30000);
-    current_decision = decision_tree[3];
+    current_decision = decision_tree[4];
     changeDate(11, 5-1, 2022);
 
     var group = "Patrick";
