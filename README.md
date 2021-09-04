@@ -6,6 +6,6 @@ We hope that through the use of the diary and the messenger as a medium, one can
 
 To access the game, simply click the link below - (Hosted by Github Pages)
 Note: This game does not run well on safari. Chrome or Firefox or IE are good enough.
-Link: https://mcnabry.github.io/cvep-submission/
+Link: https://mcnabry.github.io/mindful-hacks-submission/
 
 Hope you enjoy our game :)
