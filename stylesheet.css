@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: default;
 }
 
 /* DIVIDER */
@@ -69,6 +70,14 @@ body {
     padding: 10px 10px 10px 20px;
     background: #bdc3c7;
     overflow: auto;
+}
+
+#diary-list div {
+    cursor: pointer;
+}
+
+#diary-list div:hover {
+    font-style:italic;
 }
 
 #diary-main {
