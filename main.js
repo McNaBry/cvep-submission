@@ -752,19 +752,6 @@ async function day2_notell() {
     options_group = "Group";
     decision_log['day2'] = 'lie';
 
-    addDiaryEvent([
-        "J1 Results Day", "19 November 2021",
-        `
-        Dear Diary,
-        <br /><br />
-	    It truly has been a busy year. We finally made it to the very end. Even Adi, who is usually on top of everything, has been feeling swamped. His results weren’t as good as he had expected but, being the tough bean that he is, wasn’t too distraught. He did mention the many changes we had to adapt to and accepted that a drop in grades was to be expected. 
-        <br /><br />
-	    Hilman scored the usual. Straight ‘A’s again. I don’t know how that man keeps doing it! Meanwhile here I am proud of my slight improvement from the midyear exams. 
-        <br /><br />
-        Weirdly, Patrick seemed to have slipped up this time around. Considering that he didn’t want to tell the truth, it must be a sensitive topic for him. Hopefully the others are understanding if they ever do find out about it.
-        `
-    ]);
-
     displayOption(current_decision.descendants);
 
     conflict_flag = true;
