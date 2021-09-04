@@ -439,7 +439,7 @@ function buildDecisionTree() {
     start3Node.descendants.push(liePath);
 
     var adviceOption = new TreeNode("[Give Advice]", day3_advice);
-    var supportOption = new TreeNode("[Give Advice]", day3_support);
+    var supportOption = new TreeNode("[Give Support]", day3_support);
     exposePath.descendants.push(adviceOption);
     exposePath.descendants.push(supportOption);
 
@@ -1080,10 +1080,12 @@ async function day32_keep() {
 }
 
 async function day32_release() {
-    var group = "Group";
+    var group = "Adi";
     await addMessageEvent(group, newMessage("Player", "If you want, you cld prompt him a little on the grp"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "But be nice abt it, just softly prod him"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Adi", "Hmm I’ll try that"), message_notif, 2000);
+
+    group = "Group";
     await addMessageEvent(group, newMessage("Adi", "Hey, Patrick, I hope this doesn’t overstep any boundaries, but I feel that we shld talk as a grp. We are all aware tht you didn’t do too well for your exams. Honestly, there’s no need to be embarrassed about it at all. We all make mistakes and sometimes we just don’t hit what we expect. But we are all here for you, and we don’t think any less of you because you faltered in your exams. You can trust us with these things, and we’ll be here to do whatever we can. Of course, we will respect your privacy if you ask for it. We get it"), message_notif, 4000);
     await addMessageEvent(group, newMessage("Hilman", "Yea, you don’t really have to be ashamed that you didn’t do as well as you had hoped. We all have those moments, but the important thing is accepting our failures and learning to live with them and work on them."), message_notif, 2000);
     await addMessageEvent(group, newMessage("Patrick", "Guys, I’m sorry"), message_notif, 2000);
