@@ -177,6 +177,7 @@ class TreeNode {
 
 var decision_tree = [];
 var conflict_flag = false;
+var lock_options = true;
 current_decision = null;
 
 //helper sleep function from https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep 
@@ -331,8 +332,24 @@ function buildDecisionTree() {
     exposePath.descendants.push(adviceOption);
     exposePath.descendants.push(supportOption);
 
+    // Day 4
     var start4Node = new TreeNode("root", null);
+    var consoleOption = new TreeNode("[Console and reassure him by yourself]", day4_console);
+    var groupOption = new TreeNode("[Bring up Patrick's stresses in the group] AFFINITY MUST BE GREATER THAN 7", day4_group);
+    start4Node.descendants.push(consoleOption);
+    start4Node.descendants.push(groupOption);
 
+    var console2Option = new TreeNode("[Console and reassure him by yourself]", day4_console2);
+    var group2Option = new TreeNode("[Bring up Patrick's stresses in the group] AFFINITY MUST BE GREATER THAN 8", day4_group2);
+    consoleOption.descendants.push(console2Option);
+    consoleOption.descendants.push(group2Option);
+
+    var console3Option = new TreeNode("[Console and reassure him by yourself]", day4_console3);
+    var group3Option = new TreeNode("[Bring up Patrick's stresses in the group] AFFINITY MUST BE GREATER THAN 8", day4_group3);
+    var restOption = new TreeNode("[Bring up Patrick's stresses in the group] AFFINITY MUST BE GREATER THAN 8", day4_rest);
+    console2Option.descendants.push(console3Option);
+    console2Option.descendants.push(group3Option);
+    console2Option.descendants.push(restOption);
 
     decision_tree.push(startNode);
     decision_tree.push(start2Node);
@@ -343,11 +360,13 @@ function buildDecisionTree() {
 
 // Onclick option event handler
 function processOption(option) {
-    if (option > current_decision.descendants.length - 1) {
+    if (option > current_decision.descendants.length - 1 || lock_options) {
         return;
     }
 
     current_decision = current_decision.descendants[option];
+    lock_options = true;
+    displayOption([]);
     if (current_decision.option[0] == '[') {
         if (current_decision) {
             current_decision.gameEvent();
@@ -362,6 +381,11 @@ function processOption(option) {
 
 // Displays the new options (descendants of the current decision node)
 function displayOption(decisions) {
+    lock_options = false;
+    if (decisions.length == 0) {
+        lock_options = true;
+    }
+
     for (var i = 0; i < decisions.length; i++) {
         var option_box = document.getElementById("option" + String(i + 1));
         option_box.textContent = decisions[i].option;
@@ -426,7 +450,6 @@ function day1_probing() {
 
     addMessageEvent(group, newMessage("Patrick", "I'm just busy. I can't make it. Sorry to disappoint"), message_notif, 1000);
     displayOption(current_decision.descendants);
-    console.log(current_decision);
 }
 
 function day1_probingend() {
@@ -455,13 +478,51 @@ function day1_probingend() {
     startday2();
 }
 
-function startday2() {
+async function startday2() {
+    await sleep(5000);
     current_decision = decision_tree[1];
+    addDiaryEvent([
+        "Class Ranking", "01 August 2019",
+        "Class Ranking is awesome"
+    ]);
+    await sleep(5000);
+    var group = 'Group';
+
+    await addMessageEvent(group, newMessage("Hilman", "Yo how did yall do?"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "Well, could be better"), message_notif, 3000);
+    await addMessageEvent(group, newMessage("Adi", "Uhm Math poor as usual"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "Oof my Math dropped too"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Adi", "Adi: But Chemistry and Chinese not too bad"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "Literature dropped a bit, and so did Econs"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "But my biggest disappointment would be my GP"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "Wah same"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Player", "I thought GP was okay"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Hilman", "Ohh yall didn’t do too well?"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "Uh I guess dropped a bit"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "But it’s to be expected, JC has been so packed"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "Yeah, so many CCA events and stuff to do"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "All the topics are all new too"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "My other subjects like comp science and chem improved a little though"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "Hbu Hilman? You did well?"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Hilman", "Okay lah, mostly As still, just a slight drop in lit to B"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "HAHAHAH okay lah what to do? At least your Lit is still doing well"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "I barely managed a C for Lit this time"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Hilman", "@Patrick hbu? Are your chem and math still up there?"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "All the topics are all new too"), message_notif, 1000);
+
     displayOption(current_decision.descendants);
 }
 
-function day2_reveal() {
+async function day2_reveal() {
+    var group = "Group";
 
+    await addMessageEvent(group, newMessage("Player", "Nah, Patrick didn’t do too well this time"), message_notif, 0);
+    await addMessageEvent(group, newMessage("Player", "I think he struggled to pass most subjects"), message_notif, 3000);
+    await addMessageEvent(group, newMessage("Adi", "Patrick? Really? He topped us all at Os"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Hilman", "Hmm perhaps the JC changes really got him"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "Give him a while"), message_notif, 1000);
+
+    displayOption(current_decision.descendants);
 }
 
 function day2_wait() {
@@ -549,6 +610,39 @@ function startConflict() {
 function startDay4() {
 
 }
+
+function day4_console() {
+
+}
+
+function day4_group() {
+    startDay5();
+}
+
+function day4_console2() {
+    
+}
+
+function day4_group2() {
+    startDay5();
+}
+
+function day4_console3() {
+    startDay5();
+}
+
+function day4_group3() {
+    startDay5();
+}
+
+function day4_rest() {
+    startDay5();
+}
+
+function startDay5() {
+
+}
+
 
 window.onload = function() {
     var chat = document.getElementById('chat-window');
