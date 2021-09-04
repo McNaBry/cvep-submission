@@ -178,6 +178,7 @@ class TreeNode {
 var decision_tree = [];
 var conflict_flag = false;
 var lock_options = true;
+var options_group = 'Group';
 current_decision = null;
 
 //helper sleep function from https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep 
@@ -300,15 +301,15 @@ function buildDecisionTree() {
     revealOption.descendants.push(relaxOption);
     revealOption.descendants.push(apologyOption);
 
-    var apologyOption2 = new TreeNode("Sorry, I should have let you reply yourself. It’s my bad for not being more sensitive", day2_apology2);
+    var apologyOption2 = new TreeNode("[Apologise to Patrick]", day2_apology2);
     var probingOption2 = new TreeNode("[Probe further]", day2_probing);
     relaxOption.descendants.push(apologyOption2);
     relaxOption.descendants.push(probingOption2);
 
     var understandOption = new TreeNode("ok I understand. I won’t tell them", day2_understand);
     var notellOption = new TreeNode("I won’t tell them if you don’t want me to. But why not?", day2_notell);
-    apologyOption.descendants.push(understandOption);
-    apologyOption.descendants.push(notellOption);
+    waitOption.descendants.push(understandOption);
+    waitOption.descendants.push(notellOption);
 
     var okOption = new TreeNode("Ok", day2_ok);
     var questionOption = new TreeNode("[Continue Questioning]", day2_questioning);
@@ -372,7 +373,7 @@ function processOption(option) {
             current_decision.gameEvent();
         }
     } else {
-        addMessageEvent('Group', newMessage("Player", current_decision.option), message_notif, 0);
+        addMessageEvent(options_group, newMessage("Player", current_decision.option), message_notif, 0);
         if (current_decision) {
             current_decision.gameEvent();
         }
@@ -492,7 +493,7 @@ async function startday2() {
     await addMessageEvent(group, newMessage("Adi", "Well, could be better"), message_notif, 3000);
     await addMessageEvent(group, newMessage("Adi", "Uhm Math poor as usual"), message_notif, 1500);
     await addMessageEvent(group, newMessage("Player", "Oof my Math dropped too"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Adi", "Adi: But Chemistry and Chinese not too bad"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "But Chemistry and Chinese not too bad"), message_notif, 1500);
     await addMessageEvent(group, newMessage("Adi", "Literature dropped a bit, and so did Econs"), message_notif, 1500);
     await addMessageEvent(group, newMessage("Adi", "But my biggest disappointment would be my GP"), message_notif, 1500);
     await addMessageEvent(group, newMessage("Player", "Wah same"), message_notif, 1000);
@@ -517,129 +518,226 @@ async function day2_reveal() {
     var group = "Group";
 
     await addMessageEvent(group, newMessage("Player", "Nah, Patrick didn’t do too well this time"), message_notif, 0);
-    await addMessageEvent(group, newMessage("Player", "I think he struggled to pass most subjects"), message_notif, 3000);
+    await addMessageEvent(group, newMessage("Player", "I think he struggled to pass most subjects"), message_notif, 1500);
     await addMessageEvent(group, newMessage("Adi", "Patrick? Really? He topped us all at Os"), message_notif, 1500);
     await addMessageEvent(group, newMessage("Hilman", "Hmm perhaps the JC changes really got him"), message_notif, 1500);
     await addMessageEvent(group, newMessage("Adi", "Give him a while"), message_notif, 1000);
 
+    group = "Patrick";
+    await addMessageEvent(group, newMessage("Patrick", "DID YOU HAVE TO TELL THEM??"), message_notif, 1000);
+    options_group = "Patrick";
+
     displayOption(current_decision.descendants);
 }
 
-function day2_wait() {
-    
+async function day2_wait() {
+    var group = "Group";
+    await addMessageEvent(group, newMessage("Patrick", "Aiya yall know me, can’t get anything less than 85 rank points"), message_notif, 3000);
+    await addMessageEvent(group, newMessage("Hilman", "Okay okay no needa flex"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Hilman", "Your ego going to break the roof alr"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "Let him be happy bro, you know how hard he’s been working"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "LOL OKAY PATRICK"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Adi", "The girls will be chasing after your massive brain soon"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "Yah don’t forget us when the girls are flocking to you for tuition"), message_notif, 1500);
+
+    group = "Patrick";
+    await addMessageEvent(group, newMessage("Patrick", "Eh bro"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Patrick", "I know you saw the class rankings"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Patrick", "I’m pretty much dead last"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Patrick", "Pls keep this between us"), message_notif, 1000);
+    options_group = "Patrick";
+
+    displayOption(current_decision.descendants);
 }
 
-function day2_relax() {
-    
+async function day2_relax() {
+    var group = "Patrick";
+    await addMessageEvent(group, newMessage("Patrick", "Ofc you can say that"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Patrick", "Ur parents wld be happy even if you are dead last in class"), message_notif, 1500);
+
+    displayOption(current_decision.descendants);
 }
 
-function day2_apology() {
-    
-}
+async function day2_apology() {
+    var group = "Patrick";
+    await addMessageEvent(group, newMessage("Patrick", "Nah, it’s fine"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Player", "Just let me know if you need anything okay"), message_notif, 1500);
+    options_group = "Group";
 
-function day2_apology2() {
-    
-}
-
-function day2_probing() {
-
-}
-
-function day2_understand() {
-
-    //addconflict
+    displayOption(current_decision.descendants);
     startDay3();
 }
 
-function day2_notell() {
+async function day2_apology2() {
+    var group = "Patrick";
+    await addMessageEvent(group, newMessage("Player", "Hey, uh I guess I didn’t mean it like that. I just thought that you could trust these guys and all, sorry if replying for you wasn’t sensitive on my part"), message_notif, 0);
+    await addMessageEvent(group, newMessage("Patrick", "Yeah, it’s fine"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "I guess I just wanted to encourage you to do better next time"), message_notif, 1500);
+    options_group = "Group";
 
-    //addconflict
+    displayOption(current_decision.descendants);
     startDay3();
 }
 
-function day2_ok() {
-
-}
-
-function day2_questioning() {
-
-}
-
-function day2_convoend() {
-
-    //addconflict
+async function day2_probing() {
+    options_group = "Group";
+    displayOption(current_decision.descendants);
     startDay3();
 }
 
-function day2_pushing() {
+async function day2_understand() {
+    var group = "Patrick";
+    await addMessageEvent(group, newMessage("Player", "Ok, I understand. I won’t tell them"), message_notif, 0);
+    await addMessageEvent(group, newMessage("Patrick", "Thx bro"), message_notif, 1500);
+    options_group = "Group";
 
-    //addconflict
+    displayOption(current_decision.descendants);
+
+    conflict_flag = true;
     startDay3();
 }
 
-function startDay3() {
+async function day2_notell() {
+    var group = "Patrick";
+    await addMessageEvent(group, newMessage("Player", "I won’t tell them if you don’t want me to, but why not?"), message_notif, 0);
+    await addMessageEvent(group, newMessage("Patrick", "It’s just...embarrassing"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "Pls don’t tell them"), message_notif, 1000);
+    options_group = "Group";
+
+    displayOption(current_decision.descendants);
+
+    conflict_flag = true;
+    startDay3();
+}
+
+async function day2_ok() {
+    conflict_flag = true;
+    startDay3();
+}
+
+async function day2_questioning() {
+    var group = "Patrick";
+    await addMessageEvent(group, newMessage("Player", "I’m sure that Adi and Hilman can understand"), message_notif, 0);
+    await addMessageEvent(group, newMessage("Player", "We’ve been friends for long enough and we can get past this hurdle together"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "Don’t you think so?"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Patrick", "I guess so"), message_notif, 1000);
+
+    displayOption(current_decision.descendants);
+}
+
+async function day2_convoend() {
+    options_group = "Group";
+    conflict_flag = true;
+    startDay3();
+}
+
+async function day2_pushing() {
+    var group = "Patrick";
+    await addMessageEvent(group, newMessage("Player", "Just let them know I guess.."), message_notif, 0);
+    await addMessageEvent(group, newMessage("Player", "Try not to keep lies from them"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "We are friends afterall"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Patrick", "Hmm"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Patrick", "Fine I guess"), message_notif, 1000);
+
+    group = "Group";
+    await addMessageEvent(group, newMessage("Patrick", "Guys...actually"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Patrick", "I didn’t do well at all"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "I came pretty much last in class"), message_notif, 1000);
+
+    await sleep(2000);
+    var chats = document.getElementById('chat-window');
+    for (var i = chats.length - 1; i > chats.length - 4; i++) {
+        chats.removeChild(chats.lastChild);
+    }
+
+    group = "Hilman";
+    await addMessageEvent(group, newMessage("Hilman", "Yo dude"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Hilman", "What’s up w Patrick?"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Hilman", "Why’d he say he did well then suddenly change"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "Well I guess"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Player", "It may be something sensitive to him, so let’s just support him now and be sensitive"), message_notif, 1000);
+    
+    group = "Group";
+    await addMessageEvent(group, newMessage("Adi", "Eh don’t be ashamed to admit it, we all make mistakes sometimes. Sometimes we just need a break to improve and try harder"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Hilman", "Yeah, sometimes you just gotta stop, take a good hard look at yourself, then carry on from there"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Adi", "Anw bro, we are all here if you need us, just ask and we’ll help"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "It’s a long way to go honestly, so don’t be afraid to ask for help"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Patrick", "Yeah, thanks guys. I guess it’s just been a hard year"), message_notif, 1000);
+    await addMessageEvent(group, newMessage("Player", "It has been on all of us, so don’t be scared to talk abt it"), message_notif, 1000);
+    
+    options_group = "Group";
+
+    displayOption(current_decision.descendants);
+
+    conflict_flag = true;
+    startDay3();
+}
+
+async function startDay3() {
+    options_group = "Group";
+    current_decision = decision_tree[2];
 
 }
 
-function day3_expose() {
+async function day3_expose() {
 
 }
 
-function day3_lie() {
+async function day3_lie() {
     if (conflict_flag) {
         startConflict();
     }
 }
 
-function day3_advice() {
+async function day3_advice() {
     if (conflict_flag) {
         startConflict();
     }
 }
 
-function day3_support() {
+async function day3_support() {
     if (conflict_flag) {
         startConflict();
     }
 }
 
-function startConflict() {
+async function startConflict() {
     startDay4()
 }
 
-function startDay4() {
+async function startDay4() {
 
 }
 
-function day4_console() {
+async function day4_console() {
 
 }
 
-function day4_group() {
+async function day4_group() {
     startDay5();
 }
 
-function day4_console2() {
+async function day4_console2() {
     
 }
 
-function day4_group2() {
+async function day4_group2() {
     startDay5();
 }
 
-function day4_console3() {
+async function day4_console3() {
     startDay5();
 }
 
-function day4_group3() {
+async function day4_group3() {
     startDay5();
 }
 
-function day4_rest() {
+async function day4_rest() {
     startDay5();
 }
 
-function startDay5() {
+async function startDay5() {
 
 }
 
