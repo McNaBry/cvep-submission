@@ -161,6 +161,8 @@ var diary_entries = [
 
 decision_log = {
     "day2": "",
+    'final': "",
+    'reject': false,
 };
 
 var current_chat = "Group";
@@ -350,10 +352,14 @@ function buildDecisionTree() {
     console2Option.descendants.push(console3Option);
     console2Option.descendants.push(restOption);
 
+    // Day 5
+    var start5Node = new TreeNode("root", null);
+
     decision_tree.push(startNode);
     decision_tree.push(start2Node);
     decision_tree.push(start3Node);
     decision_tree.push(start4Node);
+    decision_tree.push(start5Node);
 
     current_decision = startNode;
 }
@@ -404,15 +410,15 @@ async function startGame() {
     await addMessageEvent(group, newMessage("Adi", "How dare youuu"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Hilman", "Eh there’s a movie at 7pm"), message_notif, 3000);
     await addMessageEvent(group, newMessage("Hilman", "Just nice we eat dinner first, watch alr, then go get drinks"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Adi", "Woi we underage you know"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "Woi we underage you know"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "Ehh nice one lah"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Player", "Meet at 5pm?"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Hilman", "@Adi bro I just meant dessert and stuff"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Hilman", "@Bryan sounds good. Movie is at Vivo City so we can just meet there"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Adi", "Ah, just nice, near my house. Okay, see yall"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Adi", "@Patrick you coming?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Uhm"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I think yall go ahead without me, I've got stuff"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "@Patrick you coming?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Uhm"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I think yall go ahead without me, I've got stuff"), message_notif, 2000);
 	
     displayOption(current_decision.descendants);
 }
@@ -488,26 +494,26 @@ async function startday2() {
     await sleep(5000);
     var group = 'Group';
 
-    await addMessageEvent(group, newMessage("Hilman", "Yo how did yall do?"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Hilman", "Yo how did yall do?"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Adi", "Well, could be better"), message_notif, 3000);
-    await addMessageEvent(group, newMessage("Adi", "Uhm Math poor as usual"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "Uhm Math poor as usual"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "Oof my Math dropped too"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Adi", "But Chemistry and Chinese not too bad"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "Literature dropped a bit, and so did Econs"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "But my biggest disappointment would be my GP"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "But Chemistry and Chinese not too bad"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "Literature dropped a bit, and so did Econs"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "But my biggest disappointment would be my GP"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "Wah same"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Player", "I thought GP was okay"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "Ohh yall didn’t do too well?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "Uh I guess dropped a bit"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "But it’s to be expected, JC has been so packed"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Yeah, so many CCA events and stuff to do"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "All the topics are all new too"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "My other subjects like comp science and chem improved a little though"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "I thought GP was okay"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "Ohh yall didn’t do too well?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "Uh I guess dropped a bit"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "But it’s to be expected, JC has been so packed"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Yeah, so many CCA events and stuff to do"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "All the topics are all new too"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "My other subjects like comp science and chem improved a little though"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Adi", "Hbu Hilman? You did well?"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Hilman", "Okay lah, mostly As still, just a slight drop in lit to B"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "HAHAHAH okay lah what to do? At least your Lit is still doing well"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "I barely managed a C for Lit this time"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "@Patrick hbu? Are your chem and math still up there?"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Hilman", "Okay lah, mostly As still, just a slight drop in lit to B"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "HAHAHAH okay lah what to do? At least your Lit is still doing well"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "I barely managed a C for Lit this time"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "@Patrick hbu? Are your chem and math still up there?"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Adi", "All the topics are all new too"), message_notif, 1000);
 
     displayOption(current_decision.descendants);
@@ -517,9 +523,9 @@ async function day2_reveal() {
     var group = "Group";
 
     await addMessageEvent(group, newMessage("Player", "Nah, Patrick didn’t do too well this time"), message_notif, 0);
-    await addMessageEvent(group, newMessage("Player", "I think he struggled to pass most subjects"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "Patrick? Really? He topped us all at Os"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "Hmm perhaps the JC changes really got him"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "I think he struggled to pass most subjects"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "Patrick? Really? He topped us all at Os"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "Hmm perhaps the JC changes really got him"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Adi", "Give him a while"), message_notif, 1000);
 
     group = "Patrick";
@@ -534,12 +540,12 @@ async function day2_reveal() {
 async function day2_wait() {
     var group = "Group";
     await addMessageEvent(group, newMessage("Patrick", "Aiya yall know me, can’t get anything less than 85 rank points"), message_notif, 3000);
-    await addMessageEvent(group, newMessage("Hilman", "Okay okay no needa flex"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "Your ego going to break the roof alr"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "Let him be happy bro, you know how hard he’s been working"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Hilman", "Okay okay no needa flex"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "Your ego going to break the roof alr"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "Let him be happy bro, you know how hard he’s been working"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "LOL OKAY PATRICK"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Adi", "The girls will be chasing after your massive brain soon"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Yah don’t forget us when the girls are flocking to you for tuition"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "The girls will be chasing after your massive brain soon"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Yah don’t forget us when the girls are flocking to you for tuition"), message_notif, 2000);
 
     group = "Patrick";
     await addMessageEvent(group, newMessage("Patrick", "Eh bro"), message_notif, 1000);
@@ -554,7 +560,7 @@ async function day2_wait() {
 async function day2_relax() {
     var group = "Patrick";
     await addMessageEvent(group, newMessage("Patrick", "Ofc you can say that"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Patrick", "Ur parents wld be happy even if you are dead last in class"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "Ur parents wld be happy even if you are dead last in class"), message_notif, 2000);
 
     displayOption(current_decision.descendants);
 }
@@ -562,7 +568,7 @@ async function day2_relax() {
 async function day2_apology() {
     var group = "Patrick";
     await addMessageEvent(group, newMessage("Patrick", "Nah, it’s fine"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Player", "Just let me know if you need anything okay"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "Just let me know if you need anything okay"), message_notif, 2000);
     options_group = "Group";
 
     displayOption(current_decision.descendants);
@@ -572,8 +578,8 @@ async function day2_apology() {
 async function day2_apology2() {
     var group = "Patrick";
     await addMessageEvent(group, newMessage("Player", "Hey, uh I guess I didn’t mean it like that. I just thought that you could trust these guys and all, sorry if replying for you wasn’t sensitive on my part"), message_notif, 0);
-    await addMessageEvent(group, newMessage("Patrick", "Yeah, it’s fine"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "I guess I just wanted to encourage you to do better next time"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "Yeah, it’s fine"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "I guess I just wanted to encourage you to do better next time"), message_notif, 2000);
     options_group = "Group";
 
     displayOption(current_decision.descendants);
@@ -589,7 +595,7 @@ async function day2_probing() {
 async function day2_understand() {
     var group = "Patrick";
     await addMessageEvent(group, newMessage("Player", "Ok, I understand. I won’t tell them"), message_notif, 0);
-    await addMessageEvent(group, newMessage("Patrick", "Thx bro"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "Thx bro"), message_notif, 2000);
     options_group = "Group";
     decision_log['day2'] = 'lie';
 
@@ -602,7 +608,7 @@ async function day2_understand() {
 async function day2_notell() {
     var group = "Patrick";
     await addMessageEvent(group, newMessage("Player", "I won’t tell them if you don’t want me to, but why not?"), message_notif, 0);
-    await addMessageEvent(group, newMessage("Patrick", "It’s just...embarrassing"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "It’s just...embarrassing"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Patrick", "Pls don’t tell them"), message_notif, 1000);
     options_group = "Group";
     decision_log['day2'] = 'lie';
@@ -620,7 +626,7 @@ async function day2_ok() {
 async function day2_questioning() {
     var group = "Patrick";
     await addMessageEvent(group, newMessage("Player", "I’m sure that Adi and Hilman can understand"), message_notif, 0);
-    await addMessageEvent(group, newMessage("Player", "We’ve been friends for long enough and we can get past this hurdle together"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "We’ve been friends for long enough and we can get past this hurdle together"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "Don’t you think so?"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Patrick", "I guess so"), message_notif, 1000);
 
@@ -637,27 +643,27 @@ async function day2_convoend() {
 async function day2_pushing() {
     var group = "Patrick";
     await addMessageEvent(group, newMessage("Player", "Just let them know I guess.."), message_notif, 0);
-    await addMessageEvent(group, newMessage("Player", "Try not to keep lies from them"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "Try not to keep lies from them"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "We are friends afterall"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Patrick", "Hmm"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Patrick", "Fine I guess"), message_notif, 1000);
 
     group = "Group";
     await addMessageEvent(group, newMessage("Patrick", "Guys...actually"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Patrick", "I didn’t do well at all"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "I didn’t do well at all"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Patrick", "I came pretty much last in class"), message_notif, 1000);
 
     group = "Hilman";
     await addMessageEvent(group, newMessage("Hilman", "Yo dude"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Hilman", "What’s up w Patrick?"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Hilman", "Why’d he say he did well then suddenly change"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Hilman", "Why’d he say he did well then suddenly change"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "Well I guess"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Player", "It may be something sensitive to him, so let’s just support him now and be sensitive"), message_notif, 1000);
     
     group = "Group";
     await addMessageEvent(group, newMessage("Adi", "Eh don’t be ashamed to admit it, we all make mistakes sometimes. Sometimes we just need a break to improve and try harder"), message_notif, 3000);
     await addMessageEvent(group, newMessage("Hilman", "Yeah, sometimes you just gotta stop, take a good hard look at yourself, then carry on from there"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Adi", "Anw bro, we are all here if you need us, just ask and we’ll help"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "Anw bro, we are all here if you need us, just ask and we’ll help"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "It’s a long way to go honestly, so don’t be afraid to ask for help"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Patrick", "Yeah, thanks guys. I guess it’s just been a hard year"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Player", "It has been on all of us, so don’t be scared to talk abt it"), message_notif, 1000);
@@ -683,17 +689,17 @@ async function startDay3() {
     await addMessageEvent(group, newMessage("Adi", "LOL My parents aren’t even going to attend"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Hilman", "SAME, my parents said my grades don’t warrant their attention"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Adi", "HAHAHA My parents want to attend but they’re too busy at work"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Hilman", "OKAY SO ANYWAY"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Hilman", "OKAY SO ANYWAY"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Hilman", "Do yall wanna do smth during the PTM?"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Player", "We still hv lessons after the PTM"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Adi", "Yea so we can’t leave sch yet"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Hilman", "I was thinking we cld play soccer or smth"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Player", "Good idea LOL I think some of the guys frm my class wanna play too"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "Good idea LOL I think some of the guys frm my class wanna play too"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Adi", "The Joshua grp?"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Player", "Yea Joshua and gang"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Hilman", "nicee"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Patrick", "Uh guys"), message_notif, 0);
-    await addMessageEvent(group, newMessage("Patrick", "I don’t think I can play w yall"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "I don’t think I can play w yall"), message_notif, 2000);
 
     if (decision_log['day2'] == 'lie') {
         day3_lie();
@@ -705,25 +711,25 @@ async function startDay3() {
 async function day3_expose() {
     var group = "Group";
 
-    await addMessageEvent(group, newMessage("Patrick", "I need to be w my parents when they see the teachers"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "I need to be w my parents when they see the teachers"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "Ohh yea…"), message_notif, 3000);
-    await addMessageEvent(group, newMessage("Hilman", "Big oof"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "How did your parents react?"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Hilman", "Big oof"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "How did your parents react?"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Patrick", "I got scolded for going out too much and not prioritising"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Adi", "But how can that be?"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "But how can that be?"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "Yea, you studied the hardest out of all of us"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Adi", "Yeah bro, u only ever went out w the class a few times"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "Yeah, and other than choir, u had your nose in the books all day everyday"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Yea, I think it’s just the chance in tempo from sec sth to JC"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "I don’t think it’s your fault at all"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Thx for all the support guys"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "But"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "My parents don’t see it the way.."), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "But at least you passed all your important subjects right?"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "Yeah bro, u only ever went out w the class a few times"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "Yeah, and other than choir, u had your nose in the books all day everyday"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Yea, I think it’s just the change in tempo from sec sch to JC"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "I don’t think it’s your fault at all"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Thx for all the support guys"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "But"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "My parents don’t see it the way.."), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "But at least you passed all your important subjects right?"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Adi", "Surely that’s something?"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Patrick", "Well, not rlly"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "They punished me for going out too much anw, so I’m pretty much gg home straight after such from now on"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Oh and my phone usage has been cut and they’ll be monitoring me a lot more closely :|"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "Well, not rlly"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "They punished me for going out too much anw, so I’m pretty much gg home straight after such from now on"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Oh and my phone usage has been cut and they’ll be monitoring me a lot more closely :|"), message_notif, 2000);
 
     displayOption(current_decision.descendants);
 }
@@ -736,25 +742,25 @@ async function day3_lie() {
     await addMessageEvent(group, newMessage("Hilman", "Only students that did poorly need to be thr for PTM"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Patrick", "Tsk"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Patrick", "My parents just want it"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Adi", "Aiyo okay then"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "Aiyo okay then"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Hilman", "Why so sudden ah"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Hilman", "I thought ur parents nvr come for PTM"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Player", "Well I mean maybe his parents are curious about a certain female classmate of his"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Adi", "AHHH that’s more likely"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Patrick", "Why do yall always bring up Marianne"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Hilman", "Who said anth abt Marianne?"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Hilman", "Who said anth abt Marianne?"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Adi", "Heh we only said female classmate"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Player", "EXPOSEDDDDD"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Patrick", "Very funny ah yall"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Adi", "You know what’s funny, that you haven’t been eating lunch w us lately"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Hilman", "Too many lunch dates w Marianne"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Hilman", "Too many lunch dates w Marianne"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "Ya la, I always see you w her in the canteen after sch"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Patrick", "Eh no lah we’re studying"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Hilman", "Studying or dating"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Player", "Cute ahh datey datey after school"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Adi", "Eh stop lah guys, I think he’s prob gg to explode from blushing too much"), message_notif, 1000);
 
-    if (conflict_flag) {
+    if (conflict_flag && decision_log['day2'] == 'lie') {
         startConflict();
     } else {
         startDay4();
@@ -763,20 +769,20 @@ async function day3_lie() {
 
 async function day3_advice() {
     await addMessageEvent(group, newMessage("Player", "Have you told them how most people have adjustment issues?"), message_notif, 0);
-    await addMessageEvent(group, newMessage("Patrick", "That’s not rlly how it works"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "You just don’t understand them or know them well enough"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "That’s not rlly how it works"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "You just don’t understand them or know them well enough"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "Surely they saw you studying?"), message_notif, 3000);
     await addMessageEvent(group, newMessage("Patrick", "No, it’s not rlly abt the either"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Patrick", "It’s always act how I cld hv done btr and how I shld hv asked for help earlier"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "It’s always act how I cld hv done btr and how I shld hv asked for help earlier"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "Well uh perhaps you cld tell them how the JC syllabus is so diff frm what ur used to?"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Patrick", "Ugh no it just won’t help"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Aiya nvm, you just won’t understand lah"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "Heyy Bryan was just trying to offer some advice and support"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "I mean, yea he was just helping"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "tbh, you can’t rlly help"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Yall can’t convince my parents anw"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "Ugh no it just won’t help"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Aiya nvm, you just won’t understand lah"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "Heyy Bryan was just trying to offer some advice and support"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "I mean, yea he was just helping"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "tbh, you can’t rlly help"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Yall can’t convince my parents anw"), message_notif, 2000);
 
-    if (conflict_flag) {
+    if (conflict_flag && decision_log['day2'] == 'lie') {
         startConflict();
     } else {
         startDay4();
@@ -785,22 +791,22 @@ async function day3_advice() {
 
 async function day3_support() {
     await addMessageEvent(group, newMessage("Player", "Damn… that must be a lot of pressure on you"), message_notif, 0);
-    await addMessageEvent(group, newMessage("Patrick", "Well,, honestly it’s just a lot of expectations"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "The better you performed in the past, the more you’re expected to perform, am I right?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Yeah definitely"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "Well,, honestly it’s just a lot of expectations"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "The better you performed in the past, the more you’re expected to perform, am I right?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Yeah definitely"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "You know, a lot of the pressure could be what you put on yourself too"), message_notif, 3000);
     await addMessageEvent(group, newMessage("Adi", "Yea, like I mean your parents do put pressure on you and all, but half the time you’re the one pushing yourself harder than you can take"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Patrick", "I gues, I just wanna do my best and I mean I’ve done it before"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "I gues, I just wanna do my best and I mean I’ve done it before"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Hilman", "True, but rn this is diff, so you need accept for yourself that if you don’t do as well, you can’t kill yourself over it"), message_notif, 2500);
     await addMessageEvent(group, newMessage("Player", "Yea, he’s right, your parents put pressure on you, that we get. But the pressure you put on yourself won’t help either, so try to accept that when the situation changes, you’ve gotta be flexible too and adapt to it"), message_notif, 4000);
-    await addMessageEvent(group, newMessage("Adi", "Yea, don’t hold yourself to unrealistic standards. Do an honest reflection, know yourself and set achievable goals."), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "Yeah then you can improve and work harder after that"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I guess… you’re right lah"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I supposed I can cope for now"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "Yea, just let us know if you need any help"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "You can talk to us if the pressure is too much"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "Yea, don’t hold yourself to unrealistic standards. Do an honest reflection, know yourself and set achievable goals."), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "Yeah then you can improve and work harder after that"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I guess… you’re right lah"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I supposed I can cope for now"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "Yea, just let us know if you need any help"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "You can talk to us if the pressure is too much"), message_notif, 2000);
 
-    if (conflict_flag) {
+    if (conflict_flag && decision_log['day2'] == 'lie') {
         startConflict();
     } else {
         startDay4();
@@ -809,48 +815,50 @@ async function day3_support() {
 
 async function startConflict() {
     var group = "Adi";
-    await addMessageEvent(group, newMessage("Adi", "Eh dude"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "What’s up"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "You know last wk for PTM"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "Patrick was w his parents coz he didn’t do well right?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "Ur classmate Joshua showed me the class rankings"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Haish yea Patrick wasn’t too proud of it"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "He was rather ashamed of it all"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "But you know Hilman and I wouldn’t be asses about it"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "Eh dude"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "What’s up"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "You know last wk for PTM"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "Patrick was w his parents coz he didn’t do well right?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "Ur classmate Joshua showed me the class rankings"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Haish yea Patrick wasn’t too proud of it"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "He was rather ashamed of it all"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "But you know Hilman and I wouldn’t be asses about it"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Adi", "Well maybe Hilman can be a bit insensitive, but he knows not to play around with these things"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Adi", "We’ve known each other for so long, ofc we know how he feels"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "We’ve known each other for so long, ofc we know how he feels"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "Ik, just that Patrick was very sensitive about it and didn’t want me to share it"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Adi", "Sounds like you don’t trust us enough"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "No, nothing like that. I completely trust you and Hilman. It’s just that it seemed impt to Patrick?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "I guess he'll bring it up when the time is right"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "I hope so"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "Sounds like you don’t trust us enough"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "No, nothing like that. I completely trust you and Hilman. It’s just that it seemed impt to Patrick?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "I guess he'll bring it up when the time is right"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "I hope so"), message_notif, 2000);
 
-    await addMessageEvent(group, newMessage("Player", "If you want, you cld prompt him a little on the grp"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "But be nice abt it, just softly prod him"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "Hmm I’ll try that"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "If you want, you cld prompt him a little on the grp"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "But be nice abt it, just softly prod him"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "Hmm I’ll try that"), message_notif, 2000);
 
     var group = "Group";
     await addMessageEvent(group, newMessage("Adi", "Hey, Patrick, I hope this doesn’t overstep any boundaries, but I feel that we shld talk as a grp. We are all aware tht you didn’t do too well for your exams. Honestly, there’s no need to be embarrassed about it at all. We all make mistakes and sometimes we just don’t hit what we expect. But we are all here for you, and we don’t think any less of you because you faltered in your exams. You can trust us with these things, and we’ll be here to do whatever we can. Of course, we will respect your privacy if you ask for it. We get it"), message_notif, 4000);
     await addMessageEvent(group, newMessage("Hilman", "Yea, you don’t really have to be ashamed that you didn’t do as well as you had hoped. We all have those moments, but the important thing is accepting our failures and learning to live with them and work on them."), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Patrick", "Guys, I’m sorry"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "Guys, I’m sorry"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Patrick", "I should have trusted yall enough to tell you the truth"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Hilman", "Bro, you know we wldnt treat you any differently"), message_notif, 1000);
 
-    await addMessageEvent(group, newMessage("Player", "Yeah, you’re still one of us and we’re here to help"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "Yeah, you’re still one of us and we’re here to help"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Adi", "In fact, telling us can actually help you come to terms with it all"), message_notif, 1000);
     await addMessageEvent(group, newMessage("Patrick", "yea, I guess I just didnt want to accept it myself"), message_notif, 1000);
-    await addMessageEvent(group, newMessage("Patrick", "Thanks guys"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Aiya, no problem lah, we’re all here"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "Thanks guys"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Aiya, no problem lah, we’re all here"), message_notif, 2000);
     
     var group = "Adi";
-    await addMessageEvent(group, newMessage("Player", "It’s a sensitive topic"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "It’s a sensitive topic"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "Given that he has requested it remain under wraps, I think we shld recognise and respect his privacy"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Adi", "I guess I just wished that he wld trust us w these things"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "It’s not like we wldnt understand"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "But yeah, if he wants to keep it private, I totally understand as well"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "I just hope that he trusts us enough to one day share these things with us"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Trust me okay, he trusts you"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "He just needs time to process"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "I guess I just wished that he wld trust us w these things"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "It’s not like we wldnt understand"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "But yeah, if he wants to keep it private, I totally understand as well"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "I just hope that he trusts us enough to one day share these things with us"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Trust me okay, he trusts you"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "He just needs time to process"), message_notif, 2000);
+
+    decision_log['final'] = 'expose';
 
     startDay4()
 }
@@ -860,44 +868,44 @@ async function startDay4() {
     current_decision = decision_tree[3];
 
     var group = "Patrick";
-    await addMessageEvent(group, newMessage("Patrick", "bro"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I cannot"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Tmr’s exam"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I just can’t"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Take deep breaths"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I’m trying"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Okay.. just focus on that"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Breathing"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "And then tell me what’s going on"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I need more time"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I can’t do it"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Can’t do what?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Can’t pass tmr’s them test"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I need to study more"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "You’ve been studying non-stop for months"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "IT’S JUST NOT ENOUGH!!"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "There’s more"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "There’s always more"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "WHY CAN’T I JUST GET IT TOGETHER"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Patrick.. It’s 2 in the morning.."), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Have you slept?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I can’t sleep, I can’t study"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Idk what to do"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "ARGHxdajknsfa"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "There’s just so much"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I can’t do badly again"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "You won’t"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "But I will"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "There’s just so much to memorise"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "You’ve been preparing for months"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "I see you day after day working on every single subject, them included"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "You are by far the most hardworking student in the whole cohort. Potentially even in school history!"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "There’s no way you’re going to do badly this time"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "But what if I do?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "You won’t"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Trust me"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "You’ve put in the hours, and the work, everyone can see that you’re the most dedicated student"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Eh what’s another example of a covalent lattice other than diamond?"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "bro"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I cannot"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Tmr’s exam"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I just can’t"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Take deep breaths"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I’m trying"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Okay.. just focus on that"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Breathing"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "And then tell me what’s going on"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I need more time"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I can’t do it"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Can’t do what?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Can’t pass tmr’s them test"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I need to study more"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "You’ve been studying non-stop for months"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "IT’S JUST NOT ENOUGH!!"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "There’s more"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "There’s always more"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "WHY CAN’T I JUST GET IT TOGETHER"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Patrick.. It’s 2 in the morning.."), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Have you slept?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I can’t sleep, I can’t study"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Idk what to do"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "ARGHxdajknsfa"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "There’s just so much"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I can’t do badly again"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "You won’t"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "But I will"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "There’s just so much to memorise"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "You’ve been preparing for months"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "I see you day after day working on every single subject, them included"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "You are by far the most hardworking student in the whole cohort. Potentially even in school history!"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "There’s no way you’re going to do badly this time"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "But what if I do?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "You won’t"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Trust me"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "You’ve put in the hours, and the work, everyone can see that you’re the most dedicated student"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Eh what’s another example of a covalent lattice other than diamond?"), message_notif, 2000);
 
     displayOption(current_decision.descendants);
 }
@@ -905,104 +913,106 @@ async function startDay4() {
 async function day4_console() {
     var group = "Patrick";
 
-    await addMessageEvent(group, newMessage("Player", "Bruhh.. stop"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I can’t"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I can’t remember……."), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Yes you can"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Put your books down and lie down. Close your eyes and rest"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "You need to"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "What if I oversleep?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "No more what ifs"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Go sleep now"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "That’s the only thing that can help now"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "Bruhh.. stop"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I can’t"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I can’t remember……."), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Yes you can"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Put your books down and lie down. Close your eyes and rest"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "You need to"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "What if I oversleep?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "No more what ifs"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Go sleep now"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "That’s the only thing that can help now"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "If it gives you any peace, I’ll give u a call in the morning to make sure you’re awake"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Player", "Stressing more won’t help"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "You’ll do well, now go sleep"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "Stressing more won’t help"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "You’ll do well, now go sleep"), message_notif, 2000);
 
 
     //precursor to day4_console2
-    await addMessageEvent(group, newMessage("Player", "Tmr is math"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "Tmr is math"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "omg"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Adi", "I guess I just wished that he wld trust us w these things"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "It’s not like we wldnt understand"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "But yeah, if he wants to keep it private, I totally understand as well"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "I just hope that he trusts us enough to one day share these things with us"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Trust me okay, he trusts you"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "He just needs time to process"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Adi", "I guess I just wished that he wld trust us w these things"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "It’s not like we wldnt understand"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "But yeah, if he wants to keep it private, I totally understand as well"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "I just hope that he trusts us enough to one day share these things with us"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Trust me okay, he trusts you"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "He just needs time to process"), message_notif, 2000);
 
     await sleep(8000);
     day4_2();
 }
 
 async function day4_group() {
-    await addMessageEvent(group, newMessage("Player", "@Patrick why don’t you talk to all of us here"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "You know we’re all here for you"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "Yeah bro, can’t sleep?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Yeah, I just"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I just can’t remember the stuffs"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Stuff that I’ve studied for months"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "And I feel like there’s always more to be done"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "Bro, it’ll come to you.. don’t force yourself. You’ll go crazy"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "Patrick, tell me how many hours a day you study"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Uhm about 8h in sth and 3h at home I guess"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "What abt weekends and hols?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "About 6-7?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Yea, exactly. Which part of that insane regime tells you that you’re not going to perform tmr?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Coz I did badly before??"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "That’s exactly why you studied so hard in the first place"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "He’s right, you have done everything in your power to ensure that you learnt from your past mistakes and you’ll definitely be doing better this time around"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Yeah bro, there is no way that you’re messing this up"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "We all believe in you. You’re the hardest worker out there, so don’t ever doubt yourself"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Well, I never really thought abt it the way"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "Ofc you didn’t.. You were too stuck up with your past failures. Don’t ever let that stop you"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Yeah, so now go to sleep. That’s the only thing that you can do right now"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Take it all one step at a time"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "Goodnights!! :DD"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Gn guys, thanks for the pep talk"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "Np, now go and rest.."), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "@Patrick why don’t you talk to all of us here"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "You know we’re all here for you"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "Yeah bro, can’t sleep?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Yeah, I just"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I just can’t remember the stuffs"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Stuff that I’ve studied for months"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "And I feel like there’s always more to be done"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "Bro, it’ll come to you.. don’t force yourself. You’ll go crazy"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "Patrick, tell me how many hours a day you study"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Uhm about 8h in sth and 3h at home I guess"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "What abt weekends and hols?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "About 6-7?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Yea, exactly. Which part of that insane regime tells you that you’re not going to perform tmr?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Coz I did badly before??"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "That’s exactly why you studied so hard in the first place"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "He’s right, you have done everything in your power to ensure that you learnt from your past mistakes and you’ll definitely be doing better this time around"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Yeah bro, there is no way that you’re messing this up"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "We all believe in you. You’re the hardest worker out there, so don’t ever doubt yourself"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Well, I never really thought abt it the way"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "Ofc you didn’t.. You were too stuck up with your past failures. Don’t ever let that stop you"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Yeah, so now go to sleep. That’s the only thing that you can do right now"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Take it all one step at a time"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "Goodnights!! :DD"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Gn guys, thanks for the pep talk"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "Np, now go and rest.."), message_notif, 2000);
+
+    decision_log['final'] = 'expose';
 
     startDay5();
 }
 
 async function day4_2() {
     var group = "Patrick";
-    await addMessageEvent(group, newMessage("Patrick", "Tmr is math"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "omg"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "help me"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "With "), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "The formulas"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I can’t get it right "), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Since when?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Like rn!!!!"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I just can’t get it to click"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Why would that be?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "You’ve been at it for months"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "By now I’m sure you’ve memorise everything just that you don’t know it"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "But what if I don’t??"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "It’s just not going in"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "ARGHHH"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "HOW DO I DO THISS"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Bro"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Come one, you know that Math is all about practice and more practice"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "You’ve been hard at work practising every single question and practice paper out there"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Yea, but they always come up w new questions"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "So what? The concepts are all the same"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "It’ll all come to you in the test"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "What if it doesn’t?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I need more practice.."), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Do you have any more TYS questions?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Come on Patrick, you’ve literally done it all.."), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "That’s how prepared you are for this test"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "There is nothing more that you can do now but to be calm yourself down and be patient about it"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Uhm I’ll try I guess"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "But I feel like I’m always missing sth"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "No you are not"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Just get some rest"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Honestly, I can’t.. My mind is racing"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Don’t think abt it"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Srsly, clear your mind.. please rest"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I just don’t think I can do it"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "You’ve been tutoring me for the past few weeks"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "Tmr is math"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "omg"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "help me"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "With "), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "The formulas"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I can’t get it right "), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Since when?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Like rn!!!!"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I just can’t get it to click"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Why would that be?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "You’ve been at it for months"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "By now I’m sure you’ve memorise everything just that you don’t know it"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "But what if I don’t??"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "It’s just not going in"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "ARGHHH"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "HOW DO I DO THISS"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Bro"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Come one, you know that Math is all about practice and more practice"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "You’ve been hard at work practising every single question and practice paper out there"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Yea, but they always come up w new questions"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "So what? The concepts are all the same"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "It’ll all come to you in the test"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "What if it doesn’t?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I need more practice.."), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Do you have any more TYS questions?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Come on Patrick, you’ve literally done it all.."), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "That’s how prepared you are for this test"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "There is nothing more that you can do now but to be calm yourself down and be patient about it"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Uhm I’ll try I guess"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "But I feel like I’m always missing sth"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "No you are not"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Just get some rest"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Honestly, I can’t.. My mind is racing"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Don’t think abt it"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Srsly, clear your mind.. please rest"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I just don’t think I can do it"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "You’ve been tutoring me for the past few weeks"), message_notif, 2000);
 
     displayOption(current_decision.descendants);
 }
@@ -1010,136 +1020,185 @@ async function day4_2() {
 async function day4_console2() {
     var group = "Patrick";
     
-    await addMessageEvent(group, newMessage("Player", "If I can do it, you definitely can!"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "But it’s diff"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "You catch on so much faster"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I need time to learn and memorise.."), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "And you’ve have spent to much time just slogging away"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "You’ll be fine.. Relax and clear your mind :’)"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "If I can do it, you definitely can!"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "But it’s diff"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "You catch on so much faster"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I need time to learn and memorise.."), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "And you’ve have spent to much time just slogging away"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "You’ll be fine.. Relax and clear your mind :’)"), message_notif, 2000);
 
     await sleep(8000);
     day4_3();
 }
 
 async function day4_group2() {
-    await addMessageEvent(group, newMessage("Player", "@Patrick why don’t you talk to all of us here"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "You know we’re all here for you"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "Yeah bro, can’t sleep?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Yeah, I just"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I just can’t remember the stuffs"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Stuff that I’ve studied for months"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "And I feel like there’s always more to be done"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "Bro, it’ll come to you.. don’t force yourself. You’ll go crazy"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "Patrick, tell me how many hours a day you study"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Uhm about 8h in sth and 3h at home I guess"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "What abt weekends and hols?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "About 6-7?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Yea, exactly. Which part of that insane regime tells you that you’re not going to perform tmr?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Coz I did badly before??"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "That’s exactly why you studied so hard in the first place"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "@Patrick why don’t you talk to all of us here"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "You know we’re all here for you"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "Yeah bro, can’t sleep?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Yeah, I just"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I just can’t remember the stuffs"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Stuff that I’ve studied for months"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "And I feel like there’s always more to be done"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "Bro, it’ll come to you.. don’t force yourself. You’ll go crazy"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "Patrick, tell me how many hours a day you study"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Uhm about 8h in sth and 3h at home I guess"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "What abt weekends and hols?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "About 6-7?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Yea, exactly. Which part of that insane regime tells you that you’re not going to perform tmr?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Coz I did badly before??"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "That’s exactly why you studied so hard in the first place"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Hilman", "He’s right, you have done everything in your power to ensure that you learnt from your past mistakes and you’ll definitely be doing better this time around"), message_notif, 3000);
-    await addMessageEvent(group, newMessage("Player", "Yeah bro, there is no way that you’re messing this up"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "We all believe in you. You’re the hardest worker out there, so don’t ever doubt yourself"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Well, I never really thought abt it the way"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "Ofc you didn’t.. You were too stuck up with your past failures. Don’t ever let that stop you"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Yeah, so now go to sleep. That’s the only thing that you can do right now"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Take it all one step at a time"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "Goodnights!! :DD"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Gn guys, thanks for the pep talk"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "Np, now go and rest.."), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "Yeah bro, there is no way that you’re messing this up"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "We all believe in you. You’re the hardest worker out there, so don’t ever doubt yourself"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Well, I never really thought abt it the way"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "Ofc you didn’t.. You were too stuck up with your past failures. Don’t ever let that stop you"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Yeah, so now go to sleep. That’s the only thing that you can do right now"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Take it all one step at a time"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "Goodnights!! :DD"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Gn guys, thanks for the pep talk"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "Np, now go and rest.."), message_notif, 2000);
+
+    decision_log['final'] = 'expose';
 
     startDay5();
 }
 
 async function day4_3() {
     await sleep(8000);
-
-    await addMessageEvent(group, newMessage("Patrick", "Bro"), message_notif, 1500);
+    var group = "Group";
+    await addMessageEvent(group, newMessage("Patrick", "Bro"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Patrick", "I’m sorry"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Patrick", "This is like every night"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "But I really really can’t take it"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Don’t say that, just tell me"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "How are you feeling?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Like an elephant is sitting on my skull"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "And my skull is pumped full of water, about to burst"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Everything hurts"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "This is like every night"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "But I really really can’t take it"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Don’t say that, just tell me"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "How are you feeling?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Like an elephant is sitting on my skull"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "And my skull is pumped full of water, about to burst"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Everything hurts"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "Why are you stressing this badly"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Player", "Isn’t tmr just GP? I thought you were good at it"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I was"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I thought I was"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "But evidently I suck at that too"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Heyyy, you literally wrote 30 diff essays to prepare"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "No one can be more prepared than you"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Yet I’m still sure I’m going to mess it up somewhere"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "Isn’t tmr just GP? I thought you were good at it"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I was"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I thought I was"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "But evidently I suck at that too"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Heyyy, you literally wrote 30 diff essays to prepare"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "No one can be more prepared than you"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Yet I’m still sure I’m going to mess it up somewhere"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Patrick", "I just want it to end"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Player", "Do you mean…?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "No not like that"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Not yet anyways"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "But I need to just stop worrying"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "But I can’t"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Well don’t"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Everything hurts"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "Do you mean…?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "No not like that"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Not yet anyways"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "But I need to just stop worrying"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "But I can’t"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Well don’t"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Everything hurts"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Patrick", "Every second of everyday my mind is throbbing"), message_notif, 2000);
 
     displayOption(current_decision.descendants);
 }
 
 async function day4_console3() {
-    await addMessageEvent(group, newMessage("Player", "Just hang in there"), message_notif, 1500); 
-    await addMessageEvent(group, newMessage("Player", "It’s literally just a few more hours"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Last paper already okay?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Mm yea… you’re right I guess"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Yea, just tahan a bit more"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I’m just worried you know?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "I’ve been doing so badly in class and all"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Badly? You’ve been grinding every day and every night"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Everyone can see that you’re determined"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "But determination can’t solve everything"), message_notif, 1500);
+    var group = "Group";
+    await addMessageEvent(group, newMessage("Player", "Just hang in there"), message_notif, 2000); 
+    await addMessageEvent(group, newMessage("Player", "It’s literally just a few more hours"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Last paper already okay?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Mm yea… you’re right I guess"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Yea, just tahan a bit more"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I’m just worried you know?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I’ve been doing so badly in class and all"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Badly? You’ve been grinding every day and every night"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Everyone can see that you’re determined"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "But determination can’t solve everything"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "No it can’t, but at least ur mind and heart are in the right places"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Player", "So go get some sleep, ur doing the right thing alr"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Take life one step at a time"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Am I really?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Yes. You are"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "As long as your conscience is clear, the rest will follow"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Goodnight I guess"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Yea, sleep well"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "So go get some sleep, ur doing the right thing alr"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Take life one step at a time"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Am I really?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Yes. You are"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "As long as your conscience is clear, the rest will follow"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Goodnight I guess"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Yea, sleep well"), message_notif, 2000);
 
     startDay5();
 }
 
 async function day4_rest() {
-    await addMessageEvent(group, newMessage("Patrick", "Bro"), message_notif, 1500);
+    var group = "Group";
+    await addMessageEvent(group, newMessage("Patrick", "Bro"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Patrick", "I’m sorry"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Patrick", "This is like every night"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "But I really really can’t take it"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Maybe you just need some sleep"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Uhm actually, so do I"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "I’m rlly sorry, but it’s been quite a few nights staying up late and tmr is gg to be a tough paper for me"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Oh, I’m sorry"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "No, no don’t apologise"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Patrick", "This is like every night"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "But I really really can’t take it"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Maybe you just need some sleep"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Uhm actually, so do I"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "I’m rlly sorry, but it’s been quite a few nights staying up late and tmr is gg to be a tough paper for me"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Oh, I’m sorry"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "No, no don’t apologise"), message_notif, 2000);
     await addMessageEvent(group, newMessage("Player", "I just have been studying hard so I am rlly rlly tired"), message_notif, 2000);
-    await addMessageEvent(group, newMessage("Player", "I’ll see u tmr? We can talk then"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Yea, yea sure, np"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Sorry for keeping you up"), message_notif, 1500);
+    await addMessageEvent(group, newMessage("Player", "I’ll see u tmr? We can talk then"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Yea, yea sure, np"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Sorry for keeping you up"), message_notif, 2000);
+
+    decision_log['reject'] = true;
 
     startDay5();
 }
 
 async function startDay5() {
     await sleep(30000);
-    await addMessageEvent(group, newMessage("Hilman", "Guys, how’d y’all do this time arnd?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Better I guess"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Definitely could have done better but realistically, it is a step up and I wld say good progress"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "Sometimes progress is all we need"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Player", "A little bit just to get the ball rolling in the right direction"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "Yea, sometimes we just need that initial push for us to get onto the right path"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "Well, I hope it motivates you to keep going at it"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "Yea, it does. It means that what I’m doing is working"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Patrick", "How did y’all do?"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Hilman", "As good as always, I think I’m pretty consistent"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "Ofc you would say that"), message_notif, 1500);
-    await addMessageEvent(group, newMessage("Adi", "Anw I guess I improved a little too, but all in all I think I still cld do btr"), message_notif, 1500);
+    var group = "Group";
 
+    await addMessageEvent(group, newMessage("Hilman", "Guys, how’d y’all do this time arnd?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Better I guess"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Definitely could have done better but realistically, it is a step up and I wld say good progress"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "Sometimes progress is all we need"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Player", "A little bit just to get the ball rolling in the right direction"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "Yea, sometimes we just need that initial push for us to get onto the right path"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "Well, I hope it motivates you to keep going at it"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "Yea, it does. It means that what I’m doing is working"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "How did y’all do?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "As good as always, I think I’m pretty consistent"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "Ofc you would say that"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "Anw I guess I improved a little too, but all in all I think I still cld do btr"), message_notif, 2000);
+
+    if (decision_log['final'] == 'lie') {
+        day5_truth();
+    }
+}
+
+async function day5_truth() {
+    var group = "Group";
+
+    await addMessageEvent(group, newMessage("Patrick", "Btw @Hilman @Adi I’m sure by now you’re aware my grades haven’t been stellar"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "In truth, I trust you both very much, but I just haven’t been able to accept it myself, and I guess I didn’t want to shatter any perceptions of me that might have been what I depended upon for affirmation"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "You know, we’d never treat you differently"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Hilman", "Yea, you don’t really have to be ashamed that you didn’t do as well as you had hoped. We all have those moments, but the important thing is accepting our failures and learning to live with them and work on them."), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Adi", "We understand that you may have been scared to not fulfil expectations, but understand that we wld never impose such pressures on you"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "I know that now. I’m sorry for not telling yalls sooner"), message_notif, 2000);
+
+    day5_end();
+}
+
+async function day5_end() {
+    var group = "Group";
+    if (decision_log['reject']) {
+        await addMessageEvent(group, newMessage("Player", "I think I too have made good progress"), message_notif, 2000);
+        await addMessageEvent(group, newMessage("Player", "I wld say I’m finally getting the hang of JC"), message_notif, 2000);
+        await addMessageEvent(group, newMessage("Adi", "Yea, with a little more work, you cld rlly be one of the top scorers"), message_notif, 2000);
+        await addMessageEvent(group, newMessage("Hilman", "Oh you’ve got to beat me first XD"), message_notif, 2000);
+        await addMessageEvent(group, newMessage("Patrick", "You know, I think he can"), message_notif, 2000);
+    } else {
+        await addMessageEvent(group, newMessage("Player", "Uhm I guess I’ve done btr"), message_notif, 2000);
+        await addMessageEvent(group, newMessage("Player", "I made a lot of stupid mistakes"), message_notif, 2000);
+        await addMessageEvent(group, newMessage("Player", "Really careless ones, and they really cost me my grades"), message_notif, 2000);
+        await addMessageEvent(group, newMessage("Hilman", "Yeah, I saw some of them"), message_notif, 2000);
+        await addMessageEvent(group, newMessage("Hilman", "You need to be a lot more careful bro"), message_notif, 2000);
+        await addMessageEvent(group, newMessage("Adi", "All these small things can really add up"), message_notif, 2000);
+        await addMessageEvent(group, newMessage("Player", "Indeed, I think so. I need to be a lot more cautious"), message_notif, 2000);
+        await addMessageEvent(group, newMessage("Patrick", "Maybe I sold give you some of your own advice, take it one step at a time and handle the things you can, don’t stress over the things you can’t"), message_notif, 3000);
+    }
+    await addMessageEvent(group, newMessage("Player", "So how will your parents react?"), message_notif, 2000);
+    await addMessageEvent(group, newMessage("Patrick", "They’d probably be less than satisfied but realistically, this is my current ability. While I aim high and have high expectations, I am aware of what I truly can and cannot do"), message_notif, 3000);
+    await addMessageEvent(group, newMessage("Patrick", "Because of that, I will build myself up, one step at a time and I will learn to sort out constructive stress from destructive pressures"), message_notif, 3000);
+
+    alert("You've come to the end of our game :) I hoped you enjoyed it");
 }
 
 
